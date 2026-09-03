@@ -11258,8 +11258,8 @@ ${footer}`;
     }
 
     function copyUniversalNegativePrompt(btn) {
-      const negativeText = `Negative prompt (for SD / Flux): cropped limbs, cut-off legs, feet out of frame, touching borders, text, watermark, signature, bad anatomy, deformed, visual clutter, busy texture, noisy surface, fragmented details, cluttered gravel, micro-pebbles, pinecone texture, over-textured, messy details, real photo, old man, flat 2D cartoon, simplified sketch, low poly`;
-      copyToClipboard(negativeText, btn, "✓ 全域防雜亂負向提示詞已複製！");
+      const negativeText = `Negative prompt (for SD / Flux): cropped limbs, cut-off legs, feet out of frame, touching borders, text, watermark, signature, bad anatomy, deformed, visual clutter, busy texture, noisy surface, fragmented details, cluttered gravel, micro-pebbles, pinecone texture, over-textured, messy details, real photo, old man, flat 2D cartoon, simplified sketch, low poly, oily skin, greasy sheen, sweaty gloss, plastic skin, wax figure, specular hot spots, white glitter specks, lens flare, glossy highlights, 3d render shine, blown-out highlights, excessive specular reflection`;
+      copyToClipboard(negativeText, btn, "✓ 全域消光去油防雜亂負向提示詞已複製！");
     }
 
     function showToast(msg) {
@@ -11297,12 +11297,12 @@ ${footer}`;
 
       let dimPrefix = "";
       let suffixSnippet = "";
-      let noSnippet = "--no cropped limbs, cut-off legs, feet out of frame, touching borders, text, watermark, signature, bad anatomy, deformed, visual clutter, busy texture, noisy surface, fragmented details, cluttered gravel, micro-pebbles, pinecone texture, over-textured, messy details, old man";
+      let noSnippet = "--no cropped limbs, cut-off legs, feet out of frame, touching borders, text, watermark, signature, bad anatomy, deformed, visual clutter, busy texture, noisy surface, fragmented details, cluttered gravel, micro-pebbles, pinecone texture, over-textured, messy details, old man, oily skin, greasy sheen, sweaty gloss, plastic skin, wax figure, specular hot spots, white glitter specks, lens flare, glossy highlights, 3d render shine, blown-out highlights, excessive specular reflection";
 
-      // 依據「維度一：空間維度」動態切換後綴與負向約束
+      // 依據「維度一：空間維度」動態切換後綴與負向約束 (消滅 AI 油膩感與奇異亮點)
       if (activeMixerState.dimension === "dim-3d") {
-        dimPrefix = "(Masterpiece, dark anime 3D cinematic aesthetic:1.2), (high-end 3D CGI anime movie render, Unreal Engine 5 quality, stylized anime facial features, subsurface scattering, ray-traced PBR lighting:1.2)";
-        suffixSnippet = "cinematic 3D CGI anime movie render, octane render, Unreal Engine 5, realistic physical PBR materials, volumetric lighting, sharp dark anime character aesthetics, 8k resolution --style raw";
+        dimPrefix = "(Masterpiece, dark anime 3D cinematic aesthetic:1.2), (high-end theatrical 3D anime movie render, stylized anime facial features, matte skin texture, diffuse ambient lighting, natural soft shadows, non-greasy complexion:1.2)";
+        suffixSnippet = "theatrical 3D anime cinema aesthetic, matte textured surfaces, diffuse illumination, muted specular highlights, powdery dust particles, 35mm film grain, 8k resolution --style raw";
         noSnippet += ", real life photograph, real human photoshoot, live action movie still, asian actor cosplay photo, commercial portrait photo, flat 2D cartoon, simplified sketch, low poly, cel-shading, black lineart, comic book outlines, manga ink lines, 2D illustration, flat color";
       } else if (activeMixerState.dimension === "dim-2d") {
         dimPrefix = "(pure 2D hand-drawn anime art style, official Japanese animation production, clean lineart:1.2)";
