@@ -12338,56 +12338,122 @@ function createAssetCard(item) {
             ${slotCardsHtml}
           </div>
 
-          <!-- 前導概念片專屬：12 分鏡登場角色、怪物與場景速查表 -->
+          <!-- 前導概念片專屬：12 分鏡登場角色、怪物與場景速查表 (支援一鍵折疊收納) -->
           ${(ch.id === 'ch_teaser' || (ch.num && ch.num.includes('旗艦特企')) || currentChapterKey === 'ch_teaser') && typeof teaserShotReferences !== 'undefined' ? `
-            <div style="margin-top: 16px; background: #030712; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 8px; padding: 14px 16px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 8px; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
-                <div style="font-size: 13.5px; font-weight: 800; color: #38bdf8; display: flex; align-items: center; gap: 6px;">
-                  <span>🎬 前導概念片 12 分鏡登場角色、怪物與場景速查表 (人名/神祇/場景直觀一覽)</span>
+            <div style="margin-top: 16px; background: #030712; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 8px; overflow: hidden;">
+              <!-- 折疊標頭欄：可直接點擊切換 -->
+              <div onclick="toggleTeaserQuickTable()" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: rgba(15, 23, 42, 0.9); cursor: pointer; user-select: none; border-bottom: 1px solid rgba(56, 189, 248, 0.2);">
+                <div style="font-size: 13.5px; font-weight: 800; color: #38bdf8; display: flex; align-items: center; gap: 8px;">
+                  <span id="teaser-quick-table-arrow" style="display: inline-block; transition: transform 0.2s ease; font-size: 12px; color: #38bdf8;">▼</span>
+                  <span>前導概念片 12 分鏡登場角色、怪物與場景速查表 (人名 / 神祇 / 場景直觀一覽)</span>
+                  <span class="badge badge-emerald" style="font-size: 10px;">12 鏡頭完整對應</span>
                 </div>
-                <span class="badge badge-emerald" style="font-size: 10.5px;">12 鏡頭完整對應</span>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span id="teaser-quick-table-btn-text" style="font-size: 11px; font-weight: 700; color: #38bdf8; background: rgba(56, 189, 248, 0.12); padding: 3px 10px; border-radius: 4px; border: 1px solid rgba(56, 189, 248, 0.3);">收起速查表</span>
+                </div>
+              </div>
+
+              <!-- 收起狀態下的高密度摘要列 (預設隱藏，折疊後顯示) -->
+              <div id="teaser-quick-table-summary" style="display: none; padding: 10px 16px; background: rgba(8, 14, 24, 0.85); font-size: 11.5px; line-height: 1.6; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #cbd5e1; gap: 14px; flex-wrap: wrap;">
+                <div><strong style="color: #facc15;">凡人登場：</strong> 陸遠 (S01-03, S11-12)、周鐵 (S06, S08)、徐昂 (S07, S09)、宋嵐/小滿/姜淮 (S10)</div>
+                <div><strong style="color: #f87171;">神祇巨獸：</strong> 太古青銅巨門 (S04)、霜海行者 (S05)、蓐收古尊 (S06)、燭荒古尊 (S07-08, S11)</div>
+                <div><strong style="color: #34d399;">空間場景：</strong> 永達調度大廳 (S01-03)、變電站獵場 (S05)、熔爐地脈神殿 (S07-09, S11)、倒懸大教堂 (S06, S10)</div>
               </div>
               
-              <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; color: #e2e8f0;">
-                  <thead>
-                    <tr style="background: rgba(15, 23, 42, 0.9); border-bottom: 2px solid rgba(56, 189, 248, 0.3); color: #38bdf8;">
-                      <th style="padding: 8px 10px; white-space: nowrap;">鏡號</th>
-                      <th style="padding: 8px 10px; white-space: nowrap;">景別 / 時長</th>
-                      <th style="padding: 8px 10px; color: #facc15;">登場人物</th>
-                      <th style="padding: 8px 10px; color: #f87171;">登場怪物 / 神祇</th>
-                      <th style="padding: 8px 10px; color: #34d399;">所在場景</th>
-                      <th style="padding: 8px 10px; color: #fbbf24;">手持 / 操作道具</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    ${teaserShotReferences.map((r, idx) => `
-                      <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.06); background: ${idx % 2 === 0 ? 'rgba(8, 14, 24, 0.7)' : 'rgba(15, 23, 42, 0.4)'};">
-                        <td style="padding: 8px 10px; font-weight: 800; color: #38bdf8;">${r.shot}</td>
-                        <td style="padding: 8px 10px; font-family: var(--font-mono); font-size: 11px; white-space: nowrap;">
-                          <span class="badge badge-amber" style="font-size: 9.5px;">${r.type}</span> ${r.dur}
-                        </td>
-                        <td style="padding: 8px 10px; font-weight: 700; color: #fef08a;">
-                          ${r.char.includes('無') ? '<span style="color: #64748b;">（無人物）</span>' : r.char}
-                        </td>
-                        <td style="padding: 8px 10px; font-weight: 700; color: #fca5a5;">
-                          ${r.monster.includes('無') ? '<span style="color: #64748b;">（無怪物）</span>' : r.monster}
-                        </td>
-                        <td style="padding: 8px 10px; color: #86efac;">
-                          ${r.env}
-                        </td>
-                        <td style="padding: 8px 10px; color: #fde047;">
-                          ${r.prop}
-                        </td>
+              <!-- 展開狀態下的完整表格與過濾列 -->
+              <div id="teaser-quick-table-content" style="display: block; padding: 12px 16px;">
+                <div style="display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; align-items: center;">
+                  <span style="font-size: 11px; color: var(--text-muted); font-weight: 700;">快速過濾：</span>
+                  <button type="button" class="btn-copy active" onclick="filterTeaserTable('all', this)" style="padding: 2px 8px; font-size: 10.5px;">全部 12 鏡</button>
+                  <button type="button" class="btn-copy" onclick="filterTeaserTable('mortal', this)" style="padding: 2px 8px; font-size: 10.5px;">凡人動作組 (6鏡)</button>
+                  <button type="button" class="btn-copy" onclick="filterTeaserTable('boss', this)" style="padding: 2px 8px; font-size: 10.5px;">神祇巨獸組 (5鏡)</button>
+                  <button type="button" class="btn-copy" onclick="filterTeaserTable('empty', this)" style="padding: 2px 8px; font-size: 10.5px;">空鏡/異變組 (2鏡)</button>
+                </div>
+                <div style="overflow-x: auto;">
+                  <table id="teaser-table-element" style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; color: #e2e8f0;">
+                    <thead>
+                      <tr style="background: rgba(15, 23, 42, 0.9); border-bottom: 2px solid rgba(56, 189, 248, 0.3); color: #38bdf8;">
+                        <th style="padding: 8px 10px; white-space: nowrap;">鏡號</th>
+                        <th style="padding: 8px 10px; white-space: nowrap;">景別 / 時長</th>
+                        <th style="padding: 8px 10px; color: #facc15;">登場人物</th>
+                        <th style="padding: 8px 10px; color: #f87171;">登場怪物 / 神祇</th>
+                        <th style="padding: 8px 10px; color: #34d399;">所在場景</th>
+                        <th style="padding: 8px 10px; color: #fbbf24;">手持 / 操作道具</th>
                       </tr>
-                    `).join('')}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      ${teaserShotReferences.map((r, idx) => `
+                        <tr class="teaser-row" data-shot="${r.shot}" data-has-char="${!r.char.includes('無')}" data-has-monster="${!r.monster.includes('無')}" style="border-bottom: 1px solid rgba(255, 255, 255, 0.06); background: ${idx % 2 === 0 ? 'rgba(8, 14, 24, 0.7)' : 'rgba(15, 23, 42, 0.4)'};">
+                          <td style="padding: 8px 10px; font-weight: 800; color: #38bdf8;">${r.shot}</td>
+                          <td style="padding: 8px 10px; font-family: var(--font-mono); font-size: 11px; white-space: nowrap;">
+                            <span class="badge badge-amber" style="font-size: 9.5px;">${r.type}</span> ${r.dur}
+                          </td>
+                          <td style="padding: 8px 10px; font-weight: 700; color: #fef08a;">
+                            ${r.char.includes('無') ? '<span style="color: #64748b;">(無人物)</span>' : r.char}
+                          </td>
+                          <td style="padding: 8px 10px; font-weight: 700; color: #fca5a5;">
+                            ${r.monster.includes('無') ? '<span style="color: #64748b;">(無怪物)</span>' : r.monster}
+                          </td>
+                          <td style="padding: 8px 10px; color: #86efac;">
+                            ${r.env}
+                          </td>
+                          <td style="padding: 8px 10px; color: #fde047;">
+                            ${r.prop}
+                          </td>
+                        </tr>
+                      `).join('')}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           ` : ''}
         </div>
       `;
+    }
+
+    // 前導概念片速查表折疊切換邏輯
+    let isTeaserQuickTableCollapsed = false;
+    function toggleTeaserQuickTable() {
+      const content = document.getElementById('teaser-quick-table-content');
+      const arrow = document.getElementById('teaser-quick-table-arrow');
+      const btnText = document.getElementById('teaser-quick-table-btn-text');
+      const summary = document.getElementById('teaser-quick-table-summary');
+      if (!content) return;
+      isTeaserQuickTableCollapsed = !isTeaserQuickTableCollapsed;
+      if (isTeaserQuickTableCollapsed) {
+        content.style.display = 'none';
+        if (summary) summary.style.display = 'flex';
+        if (arrow) arrow.style.transform = 'rotate(-90deg)';
+        if (btnText) btnText.innerText = '展開速查表 (12 鏡)';
+      } else {
+        content.style.display = 'block';
+        if (summary) summary.style.display = 'none';
+        if (arrow) arrow.style.transform = 'rotate(0deg)';
+        if (btnText) btnText.innerText = '收起速查表';
+      }
+    }
+
+    // 前導概念片速查表分類篩選
+    function filterTeaserTable(type, btn) {
+      if (btn) {
+        btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      const rows = document.querySelectorAll('#teaser-table-element .teaser-row');
+      rows.forEach(row => {
+        const hasChar = row.getAttribute('data-has-char') === 'true';
+        const hasMonster = row.getAttribute('data-has-monster') === 'true';
+        if (type === 'all') {
+          row.style.display = '';
+        } else if (type === 'mortal') {
+          row.style.display = hasChar ? '' : 'none';
+        } else if (type === 'boss') {
+          row.style.display = hasMonster ? '' : 'none';
+        } else if (type === 'empty') {
+          row.style.display = (!hasChar && !hasMonster) || row.getAttribute('data-shot') === 'S04' ? '' : 'none';
+        }
+      });
     }
 
     // 18. 渲染分鏡卡片與標準劇本 4 軌音訊 (具備強健組件隔離與防崩潰機制)
