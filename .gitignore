@@ -1,0 +1,21 @@
+﻿# OS generated files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+Desktop.ini
+.DS_Store
+
+# Node / Editor
+node_modules/
+.vscode/
+.idea/
+
+# Root temporary debug dumps and scripts
+/*.txt
+/*.log
+/*.tmp
+/debug_js.js
+/extracted_script.js
+/test_ch.js
