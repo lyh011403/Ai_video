@@ -60,7 +60,7 @@ Medium shot of a 26-year-old Asian logistics dispatcher (Lu Yuan), pale tired fa
 - **繁體中文描述**：雙人中景，憤怒焦躁的搬運組長滿頭大汗一掌重拍在金屬桌面上；桌子另一側，陸遠身形未動，眼神如冰刀般直視組長，神色毫無波瀾。
 - **Midjourney / Flux 提示詞**：
 ```text
-Cinematic two-shot, an enraged heavy-set warehouse foreman slamming his dry calloused hand onto a cold steel table shouting aggressively, while on the opposite side the calm 26-year-old dispatcher (Lu Yuan) looks up with icy piercing eyes, scattering paper sheets, cold industrial dispatch room background with diffuse fluorescent light, dry weathered skin, natural pores, matte skin texture, powdery dust particles, dark gritty thriller aesthetic, 35mm film grain, muted dynamic range --ar 16:9 --v 6.1 --style raw --no oily skin, greasy sheen, sweaty gloss, plastic skin, wax figure, specular hot spots, white glitter specks, lens flare, glossy highlights, 3d render shine, blown-out highlights
+Cinematic two-shot, an enraged heavy-set warehouse foreman slamming his dry calloused hand onto a cold steel table shouting aggressively, while on the opposite side the calm 26-year-old dispatcher (Lu Yuan) looks up with icy piercing eyes, scattering paper sheets, cold industrial dispatch room background with diffuse fluorescent light, dry weathered skin, natural pores, matte skin texture, powdery dust particles, dark suspense thriller aesthetic, 35mm film grain, muted dynamic range --ar 16:9 --v 6.1 --style raw --no oily skin, greasy sheen, sweaty gloss, plastic skin, wax figure, specular hot spots, white glitter specks, lens flare, glossy highlights, 3d render shine, blown-out highlights, gritty overlay, sandpaper texture, speckled skin
 ```
 
 ---
@@ -150,7 +150,7 @@ Cinematic medium shot, Lu Yuan curled up against the frozen steel wall in the co
 - **繁體中文描述**：大特寫，陸遠狠狠咬破自己的舌尖，鮮血從嘴角溢出，疼痛讓他渙散的瞳孔重新聚焦出野獸般的求生意志。他右手死死抓緊胸前的黑色筆記本。
 - **Midjourney / Flux 提示詞**：
 ```text
-Extreme close-up of Lu Yuan's face, dark blood trickling from the corner of his cracked lips as he bites his tongue to regain consciousness, eyes blazing with fierce survival willpower, one hand desperately clutching the black leather notebook pressed against his chest, dark gritty anime cinematic --ar 16:9 --v 6.1 --style raw --no oily skin, greasy sheen, sweaty gloss, plastic skin, wax figure, specular hot spots, white glitter specks, lens flare, glossy highlights, 3d render shine, blown-out highlights
+Extreme close-up of Lu Yuan's face, dark blood trickling from the corner of his cracked lips as he bites his tongue to regain consciousness, eyes blazing with fierce survival willpower, one hand desperately clutching the black leather notebook pressed against his chest, dark cinematic psychological anime --ar 16:9 --v 6.1 --style raw --no oily skin, greasy sheen, sweaty gloss, plastic skin, wax figure, specular hot spots, white glitter specks, lens flare, glossy highlights, 3d render shine, blown-out highlights, gritty overlay, sandpaper texture, speckled skin
 ```
 
 ---
