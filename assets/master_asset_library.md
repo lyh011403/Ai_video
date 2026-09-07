@@ -94,7 +94,7 @@ Directional soft neutral studio lighting, even exposure, clean knit weave and po
 - Accessories: Engraved vintage silver mechanical pocket watch with internal gears visible, thin metal-frame glasses, dark grey medical crossbody satchel.
 - Mutation Detail: Left iris displaying permanent blue geometric crystal mesh.
 [Bottom Section - Micro-Textures, Material Breakdown & Close-Up Specs]: Macro close-up inset panels:
-1. Macro shot of left iris with ethereal glowing blue geometric crystal lattice mesh.
+1. Macro shot of left iris with ethereal glowing blue geometric crystal facets.
 2. Slender fingers adjusting vintage silver mechanical pocket watch gears.
 3. Ribbed beige wool knit texture and dark green trench coat seam stitching.
 4. Delicate metal eyeglass frame reflection and emergency ampoule vial.

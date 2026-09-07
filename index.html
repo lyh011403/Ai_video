@@ -1,11 +1,167 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=dashboard/index.html">
-  <title>門扉背後：凡人的弒神契約</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>門扉背後：凡人的弒神契約 · 影視製作中樞門戶</title>
+  <link rel="stylesheet" href="css/workbench.css">
+  <style>
+    .portal-container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .portal-hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .portal-title {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #f8fafc 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    .portal-subtitle {
+      color: #38bdf8;
+      font-family: monospace;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .portal-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .portal-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.15);
+    }
+    .portal-card.primary-card {
+      border-color: #0284c7;
+      background: linear-gradient(180deg, #0f172a 0%, #031c34 100%);
+    }
+    .card-badge {
+      display: inline-block;
+      font-size: 10.5px;
+      font-family: monospace;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+    .badge-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .card-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #f8fafc;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      font-size: 12.5px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .card-footer {
+      font-size: 11.5px;
+      color: #38bdf8;
+      font-family: monospace;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  </style>
 </head>
-<body style="background:#05080e;color:#f8fafc;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;">
-  <p>正在前往總控台... 如未自動跳轉請點擊 <a href="dashboard/index.html" style="color:#38bdf8;">此處</a></p>
+<body>
+
+  <header id="global-header"></header>
+
+  <div class="portal-container">
+    <div class="portal-hero">
+      <div class="portal-title">門扉背後：凡人的弒神契約</div>
+      <div class="portal-subtitle">AI CINEMATIC WORKBENCH SUITE · 影視製作中樞</div>
+    </div>
+
+    <div class="portal-grid">
+      <!-- 1. 第 1 ~ 10 章分鏡主工作台 (推薦) -->
+      <a href="workbench_episodes.html" class="portal-card primary-card">
+        <div>
+          <span class="card-badge badge-blue">RECOMMENDED · 主工作台</span>
+          <div class="card-title">第 1 ~ 10 章導演分鏡台</div>
+          <div class="card-desc">全 10 章、40 集、640 個標準鏡頭。支援極速章節切換、CINEDANCE V4 提示詞一鍵複製、Foley 音效標註與消光防雜亂負向詞。</div>
+        </div>
+        <div class="card-footer">
+          <span>進入分鏡工作台</span>
+          <span>ENTER &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 2. 官方概念前導片 -->
+      <a href="workbench_trailer.html" class="portal-card">
+        <div>
+          <span class="card-badge badge-amber">FLAGSHIP · 純視覺</span>
+          <div class="card-title">概念前導片工作台</div>
+          <div class="card-desc">官方 75 秒四幕式純視覺 0 對白電影前導片（12 鏡頭），配備 ECG 動態呼吸時序與全模態提示詞。</div>
+        </div>
+        <div class="card-footer">
+          <span>檢視前導片</span>
+          <span>ENTER &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 3. 核心資產總庫 -->
+      <a href="workbench_assets.html" class="portal-card">
+        <div>
+          <span class="card-badge badge-emerald">MASTER BIBLE · 前製</span>
+          <div class="card-title">全案核心資產總庫</div>
+          <div class="card-desc">6 大核心主角 + 赫拉去頭三視圖、五階本命神兵（T1~T5）、太古辟邪與六翼天使領主規格、4 大純環境底板。</div>
+        </div>
+        <div class="card-footer">
+          <span>檢視資產總庫</span>
+          <span>ENTER &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 4. 旗艦版總控儀表板 -->
+      <a href="dashboard/index.html" class="portal-card">
+        <div>
+          <span class="card-badge badge-blue">ALL-IN-ONE · 旗艦版</span>
+          <div class="card-title">整合型總控儀表板</div>
+          <div class="card-desc">全功能五維風格控制、TTS 對白工程、MiniMax 多模態生成與多章節分鏡總覽（已完成語法修復與數據串接）。</div>
+        </div>
+        <div class="card-footer">
+          <span>進入儀表板</span>
+          <span>ENTER &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <script src="js/viewer_engine.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderGlobalHeader('portal');
+    });
+  </script>
 </body>
 </html>

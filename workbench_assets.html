@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全案核心生產資產總庫 · 門扉背後：凡人的弒神契約</title>
+  <link rel="stylesheet" href="css/workbench.css">
+</head>
+<body>
+
+  <!-- 全域導航列 -->
+  <header id="global-header"></header>
+
+  <!-- 主內容容器 -->
+  <main class="main-container">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">全案核心前製生產資產總庫</h1>
+        <p class="page-subtitle">去頭三視圖角色表 · Descriptor · 領主怪物弱點 · 純場景底板 · 100% 消光去油無雜亂</p>
+      </div>
+      <div class="toolbar">
+        <button class="btn-primary" onclick="switchCategory('chars')">核心主角 (6+1)</button>
+        <button class="btn-secondary" onclick="switchCategory('bosses')">領主與神祇</button>
+        <button class="btn-secondary" onclick="switchCategory('envs')">環境純場景底板</button>
+      </div>
+    </div>
+
+    <!-- 資產卡片網格 -->
+    <div class="assets-grid" id="assets-container">
+      <!-- 由 JS 動態渲染 -->
+    </div>
+  </main>
+
+  <script src="js/viewer_engine.js"></script>
+  <script src="data/assets_data.js"></script>
+
+  <script>
+    let currentCategory = 'chars';
+    const bossActivePhases = {};
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderGlobalHeader('assets');
+      renderAssets();
+    });
+
+    function switchCategory(cat) {
+      currentCategory = cat;
+      renderAssets();
+    }
+
+    function selectBossPhase(bossId, phaseNum) {
+      bossActivePhases[bossId] = phaseNum;
+      renderAssets();
+    }
+
+    function renderAssets() {
+      const container = document.getElementById("assets-container");
+      if (!assetsMasterData) {
+        container.innerHTML = "<div style='color: #ef4444;'>資產數據載入異常</div>";
+        return;
+      }
+
+      let items = [];
+      if (currentCategory === 'chars') items = assetsMasterData.characters;
+      else if (currentCategory === 'bosses') items = assetsMasterData.bosses;
+      else if (currentCategory === 'envs') items = assetsMasterData.environments;
+
+      container.innerHTML = items.map(item => {
+        const isBoss = currentCategory === 'bosses' && item.phases && item.phases.length > 0;
+        let pNum = bossActivePhases[item.id] || 1;
+        let activeData = item;
+        let phaseData = null;
+
+        if (isBoss) {
+          phaseData = item.phases.find(p => p.phase === pNum) || item.phases[0];
+          activeData = {
+            ...item,
+            specs: phaseData.specs,
+            descriptor: phaseData.descriptor,
+            weakness: phaseData.weakness,
+            drops: phaseData.drops,
+            prompt: phaseData.prompt,
+            actionSignature: phaseData.actionSignature,
+            silhouette: phaseData.silhouette
+          };
+        }
+
+        return `
+        <div class="asset-card">
+          <div class="asset-title">
+            <span>${item.name}</span>
+            <span class="asset-tag">${item.badge || item.tier || 'ENVIRONMENT'}</span>
+          </div>
+
+          ${isBoss ? `
+            <div class="phase-selector">
+              <button class="btn-phase ${pNum === 1 ? 'active-phase1' : ''}" onclick="selectBossPhase('${item.id}', 1)">
+                形態一：預備 / 封印態
+              </button>
+              <button class="btn-phase ${pNum === 2 ? 'active-phase2' : ''}" onclick="selectBossPhase('${item.id}', 2)">
+                形態二：戰鬥解限態
+              </button>
+            </div>
+            <div class="silhouette-box ${pNum === 2 ? 'phase2' : ''}">
+              <span style="font-weight: 800; color: ${pNum === 2 ? '#f87171' : '#38bdf8'}; font-family: var(--font-mono); font-size: 11px;">
+                [${pNum === 2 ? '解限態剪影質變' : '封印態幾何剪影'}]：
+              </span>
+              ${activeData.silhouette}
+            </div>
+          ` : ''}
+
+          <div class="asset-desc">${activeData.specs}</div>
+
+          ${activeData.actionSignature ? `
+            <div class="audio-box" style="border-left-color: #38bdf8;">
+              <span class="audio-label" style="color: #38bdf8;">動作簽名：</span>
+              <span class="audio-content">${activeData.actionSignature}</span>
+            </div>
+          ` : ''}
+
+          ${activeData.descriptor ? `
+            <div class="prompt-box" style="margin-bottom: 0;">
+              <div class="prompt-label">DESCRIPTOR (逐字描述器)：</div>
+              <div style="font-size: 11px; color: #94a3b8; line-height: 1.4;">${activeData.descriptor}</div>
+            </div>
+          ` : ''}
+
+          ${activeData.weakness ? `
+            <div class="audio-box" style="border-left-color: #ef4444;">
+              <span class="audio-label" style="color: #ef4444;">機制解剖弱點：</span>
+              <span class="audio-content">${activeData.weakness}</span>
+            </div>
+          ` : ''}
+
+          ${activeData.drops ? `
+            <div class="audio-box" style="border-left-color: #10b981;">
+              <span class="audio-label" style="color: #10b981;">專屬掉落物：</span>
+              <span class="audio-content">${activeData.drops}</span>
+            </div>
+          ` : ''}
+
+          <div class="prompt-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span class="prompt-label">影視級 PROMPT (${isBoss ? (pNum === 1 ? '形態一 三視圖' : '形態二 戰鬥相態') : '三視圖/全景板'})：</span>
+              <button class="btn-copy-shot" onclick="copyToClipboard(this.getAttribute('data-p'), this, '已複製資產 Prompt！')" data-p="${encodeURIComponent(activeData.prompt)}">複製 PROMPT</button>
+            </div>
+            <pre class="prompt-text">${activeData.prompt}</pre>
+          </div>
+        </div>
+        `;
+      }).join("");
+    }
+  </script>
+</body>
+</html>

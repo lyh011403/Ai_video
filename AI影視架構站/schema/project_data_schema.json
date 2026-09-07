@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AIFilmProjectData",
+  "description": "Schema for portable AI Film and Comic-Drama production dashboard",
+  "type": "object",
+  "required": ["project_meta", "characters", "environments", "episodes"],
+  "properties": {
+    "project_meta": {
+      "type": "object",
+      "required": ["title", "subtitle", "default_style"],
+      "properties": {
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "genre": { "type": "string" },
+        "logline": { "type": "string" },
+        "total_episodes": { "type": "integer" },
+        "default_style": { "type": "string" }
+      }
+    },
+    "style_presets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "category": { "type": "string" },
+          "prefix": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "role", "color_palette", "master_profile", "bible_prompt"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "role": { "type": "string" },
+          "identity": { "type": "string" },
+          "archetype": { "type": "string" },
+          "color_palette": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "master_profile": { "type": "string" },
+          "bible_prompt": { "type": "string" },
+          "turnaround_prompt": { "type": "string" },
+          "voice": {
+            "type": "object",
+            "properties": {
+              "timbre": { "type": "string" },
+              "style": { "type": "string" },
+              "emotion": { "type": "string" },
+              "cfg": { "type": "number" },
+              "temperature": { "type": "number" },
+              "steps": { "type": "integer" },
+              "sway": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "environments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "geo_layout", "prompt"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "type": "string" },
+          "geo_layout": { "type": "string" },
+          "prompt": { "type": "string" },
+          "key_elements": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "props": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "owner": { "type": "string" },
+          "description": { "type": "string" },
+          "prompt": { "type": "string" }
+        }
+      }
+    },
+    "episodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ep_num", "title", "shots"],
+        "properties": {
+          "ep_num": { "type": "integer" },
+          "title": { "type": "string" },
+          "synopsis": { "type": "string" },
+          "screenplay": { "type": "string" },
+          "shots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["shot_num", "camera", "action", "prompt"],
+              "properties": {
+                "shot_num": { "type": "string" },
+                "scene": { "type": "string" },
+                "camera": { "type": "string" },
+                "characters": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "action": { "type": "string" },
+                "dialogue": { "type": "string" },
+                "prompt": { "type": "string" },
+                "voice_prompt": { "type": "string" },
+                "audio_params": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

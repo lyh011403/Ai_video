@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>工業級 AI 漫劇與影視全流程總控台</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <!-- 頂部 Studio 導航欄 -->
+  <header>
+    <div class="header-inner">
+      <div class="brand-group">
+        <div class="brand-title">
+          <h1 id="project-title">載入中...</h1>
+          <span class="badge badge-primary" id="project-genre">類型</span>
+          <span class="badge badge-bronze">工業級全流程</span>
+        </div>
+        <div class="brand-subtitle" id="project-subtitle">
+          AI 漫劇與影視全流程製作總控台
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- 風格切換器膠囊 -->
+        <button class="style-capsule-btn" id="toggle-style-drawer">
+          <span style="color:var(--text-muted);">視覺風格:</span>
+          <span id="current-style-name" style="color:var(--accent-sky);">載入中...</span>
+          <span style="font-size:10px;">▼</span>
+        </button>
+
+        <!-- 資料切換 / 匯入按鈕 -->
+        <button class="btn-header-action" id="btn-open-import">匯入 / 切換專案 JSON</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 風格抽屜 (Collapsible Style Drawer) -->
+  <section class="style-drawer" id="style-drawer">
+    <div class="style-drawer-inner">
+      <div class="style-drawer-header">
+        <span style="font-size:12px; font-weight:700; color:#fff;">視覺風格混合器 (動態融入所有分鏡提示詞前綴)</span>
+        <button class="btn-close-drawer" id="close-style-drawer">收起 ✕</button>
+      </div>
+      <div class="style-grid" id="style-grid-container"></div>
+    </div>
+  </section>
+
+  <!-- 主導航分頁列 -->
+  <nav class="main-nav">
+    <div class="main-nav-inner">
+      <button class="tab-btn active" data-tab="production">分集製作工作台</button>
+      <button class="tab-btn" data-tab="characters">角色工程體系</button>
+      <button class="tab-btn" data-tab="environments">場景空間與 GEO 地圖</button>
+      <button class="tab-btn" data-tab="overview">專案總覽與規格</button>
+    </div>
+  </nav>
+
+  <!-- 主內容容器 -->
+  <main>
+    <!-- 分頁 1: 分集製作工作台 (預設啟用) -->
+    <section id="pane-production" class="main-tab-pane active">
+      <!-- 集數選擇列 -->
+      <div class="ep-selector-bar">
+        <div style="font-size:12px; font-weight:700; color:var(--text-secondary);">選擇分集：</div>
+        <div class="ep-buttons" id="episodes-buttons"></div>
+      </div>
+
+      <!-- 子導航列 -->
+      <div class="sub-nav">
+        <button class="sub-tab-btn active" data-subtab="shots">鏡頭分鏡與提示詞庫</button>
+        <button class="sub-tab-btn" data-subtab="script">分集劇本文本對照</button>
+      </div>
+
+      <!-- 子分頁: 鏡頭列表 -->
+      <div id="subpane-shots" class="sub-tab-pane active">
+        <div class="shots-grid" id="shots-list-container"></div>
+      </div>
+
+      <!-- 子分頁: 劇本 -->
+      <div id="subpane-script" class="sub-tab-pane">
+        <div id="screenplay-container"></div>
+      </div>
+    </section>
+
+    <!-- 分頁 2: 角色工程體系 -->
+    <section id="pane-characters" class="main-tab-pane">
+      <div class="sub-nav">
+        <button class="sub-tab-btn active" data-subtab="bible">角色設定看板 (Bible)</button>
+        <button class="sub-tab-btn" data-subtab="turnaround">三視圖隔離標準</button>
+        <button class="sub-tab-btn" data-subtab="voice">聲音固定字典 (TTS)</button>
+      </div>
+
+      <div id="subpane-bible" class="sub-tab-pane active">
+        <div class="cards-grid" id="characters-bible-container"></div>
+      </div>
+
+      <div id="subpane-turnaround" class="sub-tab-pane">
+        <div class="cards-grid" id="characters-turnaround-container"></div>
+      </div>
+
+      <div id="subpane-voice" class="sub-tab-pane">
+        <div class="cards-grid" id="characters-voice-container"></div>
+      </div>
+    </section>
+
+    <!-- 分頁 3: 場景空間與 GEO 地圖 -->
+    <section id="pane-environments" class="main-tab-pane">
+      <div class="cards-grid" id="environments-list-container"></div>
+    </section>
+
+    <!-- 分頁 4: 專案總覽 -->
+    <section id="pane-overview" class="main-tab-pane">
+      <div id="overview-content"></div>
+    </section>
+  </main>
+
+  <!-- 匯入 / 切換專案資料彈窗 (Modal) -->
+  <div class="modal-overlay" id="import-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">匯入專案資料 (JSON)</div>
+        <button class="btn-close-drawer" id="btn-close-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:12px; color:var(--text-secondary); margin-bottom:10px;">
+          方式一：直接選取新專案的 <code>project_data.json</code> 檔案
+        </p>
+        <input type="file" id="json-file-input" accept=".json" style="color:var(--text-secondary); font-size:12px; margin-bottom:14px;">
+
+        <p style="font-size:12px; color:var(--text-secondary); margin-bottom:8px;">
+          方式二：直接貼上 AI 生成的 JSON 代碼
+        </p>
+        <textarea id="import-json-text" placeholder="貼上合法的 project_data.json 內容..."></textarea>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:8px;">
+        <button class="sub-tab-btn" id="btn-confirm-import" style="background:var(--accent-blue); color:#fff; border:none;">確認載入並渲染</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 複製成功的 Toast 提示 -->
+  <div id="toast">提示詞已成功複製至剪貼簿！</div>
+
+  <!-- 資料載入層 (離線與本地雙擊支援) -->
+  <script src="data/project_data.js"></script>
+  <!-- 核心渲染引擎 -->
+  <script src="js/dashboard_engine.js"></script>
+</body>
+</html>

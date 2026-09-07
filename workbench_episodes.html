@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第 1 ~ 10 章導演分鏡工程台 · 門扉背後：凡人的弒神契約</title>
+  <link rel="stylesheet" href="css/workbench.css">
+  
+  <!-- 靜態全量預載第 01 ~ 10 章獨立分鏡數據庫，徹底杜絕 file:/// 協議下的路徑阻斷 -->
+  <script src="data/chapters/ch01_data.js"></script>
+  <script src="data/chapters/ch02_data.js"></script>
+  <script src="data/chapters/ch03_data.js"></script>
+  <script src="data/chapters/ch04_data.js"></script>
+  <script src="data/chapters/ch05_data.js"></script>
+  <script src="data/chapters/ch06_data.js"></script>
+  <script src="data/chapters/ch07_data.js"></script>
+  <script src="data/chapters/ch08_data.js"></script>
+  <script src="data/chapters/ch09_data.js"></script>
+  <script src="data/chapters/ch10_data.js"></script>
+</head>
+<body>
+
+  <!-- 全域導航列 -->
+  <header id="global-header"></header>
+
+  <!-- 主內容容器 -->
+  <main class="main-container">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title" id="page-chapter-title">第 01 章：鐵門後的寒風</h1>
+        <p class="page-subtitle" id="page-chapter-subtitle">4 集標準短劇單元 · 64 鏡頭 · CINEDANCE V4 導演規格</p>
+      </div>
+      <div class="toolbar">
+        <button class="btn-primary" onclick="copyCurrentEpisodePrompts(this)">批次複製當前集數全部 PROMPT</button>
+        <button class="btn-secondary" onclick="copyNegativePrompt(this)">複製全域消光防雜亂負向詞</button>
+      </div>
+    </div>
+
+    <!-- 章節選擇按鈕列 (1 ~ 10 章) -->
+    <div class="chapter-nav" id="chapter-nav-bar">
+      <!-- 由 JS 動態產生 -->
+    </div>
+
+    <!-- 4 個分集按鈕 (Part 1 ~ Part 4) -->
+    <div class="part-nav" id="part-nav-bar">
+      <!-- 由 JS 動態產生 -->
+    </div>
+
+    <!-- 鏡頭卡片清單 -->
+    <div class="shots-grid" id="shots-container">
+      <div style="color: #64748b; padding: 40px; text-align: center; font-family: monospace;">正在載入章節分鏡數據...</div>
+    </div>
+  </main>
+
+  <script src="js/viewer_engine.js"></script>
+
+  <script>
+    // 章節清單定義
+    const chaptersList = [
+      { id: "ch01", num: "第 01 章", title: "鐵門後的寒風", file: "data/chapters/ch01_data.js" },
+      { id: "ch02", num: "第 02 章", title: "生者的潰散與失聰的重力", file: "data/chapters/ch02_data.js" },
+      { id: "ch03", num: "第 03 章", title: "黑冰夾縫與定向爆破", file: "data/chapters/ch03_data.js" },
+      { id: "ch04", num: "第 04 章", title: "高壓電弧與極寒巨像", file: "data/chapters/ch04_data.js" },
+      { id: "ch05", num: "第 05 章", title: "廢墟深處的獵鷹之眼", file: "data/chapters/ch05_data.js" },
+      { id: "ch06", num: "第 06 章", title: "反向氣流與深淵天塹", file: "data/chapters/ch06_data.js" },
+      { id: "ch07", num: "第 07 章", title: "失溫譫妄與懷錶低語", file: "data/chapters/ch07_data.js" },
+      { id: "ch08", num: "第 08 章", title: "地熱逆流與熔爐閘門", file: "data/chapters/ch08_data.js" },
+      { id: "ch09", num: "第 09 章", title: "青銅長廊與地火役卒", file: "data/chapters/ch09_data.js" },
+      { id: "ch10", num: "第 10 章", title: "赤炎初醒與編鐘神音", file: "data/chapters/ch10_data.js" }
+    ];
+
+    let currentChapterId = "ch01";
+    let currentPartIndex = 0;
+    const chaptersCache = {}; // 記憶體快取
+
+    // 初始化快取
+    function initChaptersCache() {
+      chaptersList.forEach(ch => {
+        const globalVar = window[ch.id + "_data"];
+        if (globalVar) {
+          chaptersCache[ch.id] = globalVar;
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initChaptersCache();
+      renderGlobalHeader('episodes');
+      renderChapterButtons();
+      loadAndRenderChapter(currentChapterId);
+    });
+
+    // 渲染章節導航鈕
+    function renderChapterButtons() {
+      const bar = document.getElementById("chapter-nav-bar");
+      if (!bar) return;
+      bar.innerHTML = chaptersList.map(ch => `
+        <button class="chapter-btn ${ch.id === currentChapterId ? 'active' : ''}" onclick="selectChapter('${ch.id}', this)">${ch.num} · ${ch.title}</button>
+      `).join("");
+    }
+
+    // 切換章節
+    function selectChapter(chId, btn) {
+      if (currentChapterId === chId && chaptersCache[chId]) return;
+      currentChapterId = chId;
+      currentPartIndex = 0;
+      renderChapterButtons();
+      loadAndRenderChapter(chId);
+    }
+
+    // 載入並渲染指定章節
+    function loadAndRenderChapter(chId) {
+      const container = document.getElementById("shots-container");
+
+      // 1. 若快取中已有或 window 上已有，直接 0 毫秒極速渲染
+      if (chaptersCache[chId]) {
+        renderCurrentEpisodeData(chaptersCache[chId]);
+        return;
+      }
+      if (window[chId + "_data"]) {
+        chaptersCache[chId] = window[chId + "_data"];
+        renderCurrentEpisodeData(chaptersCache[chId]);
+        return;
+      }
+
+      container.innerHTML = "<div style='color: #38bdf8; padding: 40px; text-align: center; font-family: monospace;'>正在讀取 " + chId + " 分鏡數據...</div>";
+
+      // 2. 備援：動態注入 <script>（無時間戳，相容 file:/// 與 http://）
+      const chMeta = chaptersList.find(c => c.id === chId);
+      if (!chMeta) return;
+
+      const script = document.createElement("script");
+      script.src = chMeta.file;
+      script.onload = () => {
+        const data = window[chId + "_data"];
+        if (data) {
+          chaptersCache[chId] = data;
+          renderCurrentEpisodeData(data);
+        } else {
+          container.innerHTML = "<div style='color: #ef4444; padding: 30px;'>載入成功但未找到變數 " + chId + "_data</div>";
+        }
+      };
+      script.onerror = () => {
+        container.innerHTML = "<div style='color: #ef4444; padding: 30px;'>無法載入 " + chMeta.file + "，請確認路徑或已靜態預載。</div>";
+      };
+      document.body.appendChild(script);
+    }
+
+    // 渲染當前集數分鏡
+    function renderCurrentEpisodeData(chData) {
+      if (!chData) return;
+      const titleEl = document.getElementById("page-chapter-title");
+      const subTitleEl = document.getElementById("page-chapter-subtitle");
+      if (titleEl) titleEl.innerText = chData.num + "：" + chData.title;
+      if (subTitleEl) subTitleEl.innerText = chData.subtitle || "全 4 集影視分鏡工程庫 · CINEDANCE V4 導演規格";
+
+      // 渲染 Part 按鈕
+      const partBar = document.getElementById("part-nav-bar");
+      if (partBar) {
+        if (chData.episodes && chData.episodes.length > 0) {
+          partBar.innerHTML = chData.episodes.map((ep, idx) => `
+            <button class="part-btn ${idx === currentPartIndex ? 'active' : ''}" onclick="selectPart(${idx})">${ep.pillName} (${ep.stat})</button>
+          `).join("");
+        } else {
+          partBar.innerHTML = "";
+        }
+      }
+
+      // 渲染鏡頭列表
+      const ep = chData.episodes && chData.episodes[currentPartIndex] ? chData.episodes[currentPartIndex] : (chData.episodes ? chData.episodes[0] : null);
+      const container = document.getElementById("shots-container");
+      if (container) {
+        if (ep && ep.shots && ep.shots.length > 0) {
+          container.innerHTML = ep.shots.map((shot, idx) => renderShotCard(shot, idx)).join("");
+        } else {
+          container.innerHTML = "<div style='color: #64748b; padding: 30px; text-align: center;'>本集暫無鏡頭數據</div>";
+        }
+      }
+    }
+
+    // 切換 Part
+    function selectPart(idx) {
+      currentPartIndex = idx;
+      // 重新渲染 Part 按鈕選中狀態
+      const partBtns = document.querySelectorAll("#part-nav-bar .part-btn");
+      partBtns.forEach((btn, bIdx) => {
+        btn.classList.toggle("active", bIdx === idx);
+      });
+      const chData = chaptersCache[currentChapterId] || window[currentChapterId + "_data"];
+      if (chData) renderCurrentEpisodeData(chData);
+    }
+
+    // 批次複製當前集數全部 Prompt
+    function copyCurrentEpisodePrompts(btn) {
+      const chData = chaptersCache[currentChapterId] || window[currentChapterId + "_data"];
+      if (!chData || !chData.episodes || !chData.episodes[currentPartIndex]) return;
+      const ep = chData.episodes[currentPartIndex];
+      const allText = ep.shots.map(s => `// [${s.id} - ${s.type} (${s.dur})] ${s.desc || s.visual}\n${s.prompt || s.body}`).join("\n\n----------------------------------------\n\n");
+      copyToClipboard(allText, btn, "已複製 " + ep.pillName + " 全部 Prompt！");
+    }
+
+    // 複製全域負向詞
+    function copyNegativePrompt(btn) {
+      const neg = "Negative prompt (for SD / Flux / Midjourney): cropped limbs, cut-off legs, feet out of frame, touching borders, text, watermark, signature, bad anatomy, deformed, visual clutter, busy texture, noisy surface, fragmented details, cluttered gravel, micro-pebbles, pinecone texture, over-textured, messy details, old man, oily skin, greasy sheen, sweaty gloss, plastic skin, wax figure, specular hot spots, white glitter specks, lens flare, glossy highlights, 3d render shine, blown-out highlights, excessive specular reflection, gritty overlay, sandpaper texture, speckled skin, micro-gravel, dirty speckled artifacts, excessive surface noise";
+      copyToClipboard(neg, btn, "已複製全域消光去油防雜亂負向提示詞！");
+    }
+  </script>
+</body>
+</html>

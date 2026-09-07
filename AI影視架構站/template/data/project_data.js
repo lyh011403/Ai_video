@@ -1,0 +1,108 @@
+/**
+ * 本檔案將 JSON 資料包裝為全域變數，確保在直接雙擊 index.html (file:// 協議) 開啟時不受瀏覽器 CORS 限制。
+ * 日後若有新專案，AI 生成新資料後亦可同步輸出此檔。
+ */
+window.PROJECT_DATA = {
+  "project_meta": {
+    "title": "深淵迴響：弒神之痕 (Echoes of the Abyss)",
+    "subtitle": "工業級 AI 漫劇全流程製作總控台 (範本示範專案)",
+    "genre": "暗黑奇幻 / 蒸氣龐克 / 動作史詩",
+    "logline": "在神明降下灰燼冰河的末日紀元，一名失去右臂的退役守夜人與機械學者，攜帶古代禁忌神骸之槍，穿越霜凍的永夜邊境，刺殺支配文明火種的盲眼裁決者。",
+    "total_episodes": 1,
+    "default_style": "pure-2d-anime"
+  },
+  "characters": [
+    {
+      "id": "char_alrec",
+      "name": "奧瑞克 (Alrec)",
+      "role": "男主角 · 殘鋒守夜人",
+      "identity": "退伍軍士，右臂為粗糙黑鐵液壓義肢，常年披著磨損的深灰防風斗篷",
+      "archetype": "重創耐痛戰士",
+      "color_palette": ["#1e293b", "#64748b", "#f59e0b"],
+      "master_profile": "Act in the manner of Alrec. 38 years old, broad muscular build with scarred neck and heavy shoulders, center of gravity anchored in heels. Carries life exhaustion in sunken jaw and perpetual squint. Voice Profile: Standard Mandarin, deep gravelly chest timbre, slow steady cadence with suppressed pain, drops pitch when delivering threats. Signature physical habits: repeatedly tightens hydraulic valve on right prosthetic arm when anxious; masks grief with rigid stoic gaze. Locomotion: Heavy combat trench march, torso leans slightly forward, left hand always near pommel. BUT, when seeing embers or religious crucifix, breath catches for 0.4 seconds, jaw tenses with micro-tremor. Single softening entity: a tarnished brass compass from his daughter.",
+      "bible_prompt": "Ultra-detailed character model sheet of Alrec, weathered 38yo battle-hardened veteran, messy dark graying hair, rugged scarred face, glowing cold blue eyes, rough dark charcoal coat, worn heavy leather belts, functional crude cast-iron hydraulic mechanical right arm, brass gears, holding scarred broadsword. Isolated white-grey background, 3-column layout: front full body, back full body, detailed bust close-up, strictly limited color palette (charcoal 60%, slate gray 30%, amber yellow 10%), neutral diffuse lighting, no bloom --ar 16:9 --style raw",
+      "turnaround_prompt": "Model sheet turnaround, 3 views (front view, back view, 3/4 profile portrait), character Alrec, rugged dark warrior, isolated neutral grey background, consistent proportion and clothing details --ar 16:9",
+      "voice": {
+        "timbre": "沉穩低沉的粗獷煙嗓，胸腔共鳴強烈，帶有風霜沙啞質感",
+        "style": "語速偏慢沉著，咬字沉重俐落，句尾進出氣聲微弱克制",
+        "emotion": "壓抑冷酷，帶有高度警戒與隱忍的威脅感",
+        "cfg": 2.6,
+        "temperature": 0.65,
+        "steps": 32,
+        "sway": -0.2
+      }
+    },
+    {
+      "id": "char_lyra",
+      "name": "萊拉 (Lyra)",
+      "role": "女主角 · 禁忌發明家",
+      "identity": "逃離聖城的奧術機械學者，配戴黃銅單邊護目鏡，隨身攜帶發明工具捲袋",
+      "archetype": "敏捷神經質學者",
+      "color_palette": ["#0f172a", "#38bdf8", "#fb7185"],
+      "master_profile": "Act in the manner of Lyra. 24 years old, lean and agile frame, light on her toes with center of gravity in the balls of her feet. Hyperactive observational intelligence. Voice Profile: Standard Mandarin, crisp alto timbre, rapid analytical cadence, sharp precise enunciation, tends to clip sentences short when processing danger. Signature habit: absent-mindedly taps brass tuning fork against palm; pushes goggles onto forehead when concentrating. Locomotion: Light springing steps, frequent micro-stops to scan environment. BUT, when steam pressure drops or mechanical ticking ceases, freezes completely with hyper-dilated pupils.",
+      "bible_prompt": "Character design bible sheet of Lyra, 24yo female mechanical scholar, agile silhouette, high messy ponytail, teal streaks, tailored navy engineer coat with roll-up sleeves, intricate leather harness holding brass gauges and glass vials, monocle brass goggle over left eye. Neutral studio grey background, 3-view configuration: full front view, full rear view showing tool pouch, high-resolution portrait close-up. Crisp clean linework, neutral flat lighting --ar 16:9 --style raw",
+      "turnaround_prompt": "Full turnaround bible sheet, 3 views: front view, back view, close-up bust, character Lyra female arcane engineer, neutral diffuse studio light --ar 16:9",
+      "voice": {
+        "timbre": "清亮俐落的女中音，頭腔與口腔共鳴清晰，咬字極度乾淨精確",
+        "style": "語速稍快，斷句極短且節奏感強，呼吸短促警覺",
+        "emotion": "神經質的專注與求知慾，面對危機時冷靜計算",
+        "cfg": 2.4,
+        "temperature": 0.68,
+        "steps": 30,
+        "sway": -0.3
+      }
+    }
+  ],
+  "environments": [
+    {
+      "id": "env_ruined_gate",
+      "name": "霜凍邊界哨站：絕望之門 (Gate of Frost Despair)",
+      "category": "主要核心場景",
+      "geo_layout": "GEO SPATIAL LAYOUT (LOCKED ACROSS ALL SHOTS IN SCENE):\n- Center Anchor: Massive collapsed iron portcullis embedded in 4-meter thick permafrost.\n- Spatial Left Landmark: Smashed watchtower base with flickering coal brazier at 12m.\n- Spatial Right Landmark: Abandoned steam crawler half-buried under snow at 15m.\n- Background Depth: Endless frozen black jagged cliffs under overcast tempest sky at 200m.\n- 180-Degree Line: Camera remains strictly on the South side; crossing the axis is prohibited.\n- Single Light Vector: Low angled overcast gray skylight from North-West (30 degrees elevation), casting long faint directional shadows toward South-East.",
+      "prompt": "Cinematic establishing wide shot of colossal ruined fortress iron gate frozen in glacial permafrost, towering jagged basalt mountains, abandoned steam machinery half-covered in snow, howling blizzard, directional cold daylight, high contrast grim atmosphere, 8k cinematic frame --ar 16:9 --style raw"
+    }
+  ],
+  "episodes": [
+    {
+      "ep_num": 1,
+      "title": "破曉前的寒鐵刺骨",
+      "synopsis": "奧瑞克與萊拉抵達最後的帝國邊境哨卡，在風雪停滯的瞬間，沈睡在冰層底下的哨兵機械獸被未知神律激活。",
+      "screenplay": "【場景：絕望之門 - 外圍暴風雪 - 黃昏】\n\n刺骨的暴風雪呼嘯撕扯著殘破的軍用防風斗篷。\n奧瑞克沉重的軍靴踩在凍硬的碎冰上，發出令人牙酸的喀嚓聲。\n他抬起粗糙的黑鐵義肢，液壓管噴出一股微弱的白色蒸氣，將風雪稍稍驅散。\n\n萊拉縮在巨大的倒塌閘門後方，單邊護目鏡上的指針正發狂般旋轉。\n\n萊拉（急促低語）：\n「奧瑞克，律法指針過載了……不是天氣，是地底下有東西醒了！」\n\n奧瑞克沒有回頭，左手緩緩握住巨劍的刀柄。\n\n奧瑞克（低沉冷酷）：\n「後退五步。把妳的蒸氣閥鎖死，別發出聲音。」\n\n冰層深處突然傳來令人窒息的金屬扭曲巨響——",
+      "shots": [
+        {
+          "shot_num": "S01",
+          "scene": "絕望之門外景",
+          "camera": "Wide Establishing Shot, Slow Forward Push",
+          "characters": ["奧瑞克"],
+          "action": "奧瑞克在漫天風雪中逆風而行，軍靴踩碎冰殼，黑鐵義肢微調洩壓噴出微量蒸氣",
+          "dialogue": "",
+          "prompt": "Wide cinematic shot, Alrec walking through blizzard toward colossal frozen gate, heavy combat boots crunching on frozen permafrost, black iron mechanical arm venting faint white steam, blowing snow, overcast gloomy sky, dramatic scale, cinematic framing --ar 16:9",
+          "voice_prompt": "",
+          "audio_params": ""
+        },
+        {
+          "shot_num": "S02",
+          "scene": "倒塌鐵閘門內側",
+          "camera": "Medium Close-up, Handheld Shiver",
+          "characters": ["萊拉"],
+          "action": "萊拉背貼冰冷鐵壁，手持黃銅儀表，單邊護目鏡映照出急劇抖動的指針，神情緊繃咬唇",
+          "dialogue": "奧瑞克，律法指針過載了……不是天氣，是地底下有東西醒了！",
+          "prompt": "Medium close-up of Lyra taking cover behind colossal rusty iron gate, brass goggles reflecting spinning gauge dial, breath condensing in freezing air, anxious focused expression, crisp anime line art, cinematic lighting --ar 16:9",
+          "voice_prompt": "清亮俐落女中音，語速急促短碎，換氣聲緊繃壓抑，帶有強烈危機感與計算意圖",
+          "audio_params": "cfg: 2.4, temp: 0.68, steps: 30"
+        },
+        {
+          "shot_num": "S03",
+          "scene": "雪地戰鬥軸線",
+          "camera": "Low-angle Tracking Shot",
+          "characters": ["奧瑞克"],
+          "action": "奧瑞克左手反握巨劍緩緩拔出鞘半寸，視線如鷹隼般鎖定前方隆起的冰面，腳跟向後沉穩扎地",
+          "dialogue": "後退五步。把妳的蒸氣閥鎖死，別發出聲音。",
+          "prompt": "Low-angle shot, Alrec unsheathing notched broadsword, cold blue eyes glaring forward, heavy snow swirl, rigid grounded battle stance, weathered charcoal coat flapping in storm wind --ar 16:9",
+          "voice_prompt": "低沉沙啞胸腔共鳴重音，語速沉著緩慢，句尾帶有威脅性氣音，毫無波瀾的冰冷命令",
+          "audio_params": "cfg: 2.6, temp: 0.65, steps: 32"
+        }
+      ]
+    }
+  ]
+};

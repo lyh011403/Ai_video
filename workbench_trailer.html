@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>官方概念前導片 (Concept Teaser) 導演工作台 · 門扉背後：凡人的弒神契約</title>
+  <link rel="stylesheet" href="css/workbench.css">
+</head>
+<body>
+
+  <!-- 全域導航列 -->
+  <header id="global-header"></header>
+
+  <!-- 主內容容器 -->
+  <main class="main-container">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title" id="page-title">概念前導片 (Official Concept Teaser)</h1>
+        <p class="page-subtitle" id="page-subtitle">75秒四幕式 · 12鏡頭 · 0對白 · CINEDANCE V4 導演級規格</p>
+      </div>
+      <div class="toolbar">
+        <button class="btn-primary" onclick="copyAllTrailerPrompts(this)">批次複製全部 12 鏡 PROMPT</button>
+        <button class="btn-secondary" onclick="copyNegativePrompt(this)">複製全域消光防雜亂負向詞</button>
+      </div>
+    </div>
+
+    <!-- 鏡頭卡片清單 -->
+    <div class="shots-grid" id="shots-container">
+      <!-- 由 JS 動態注入 -->
+    </div>
+  </main>
+
+  <!-- 引入解耦腳本 -->
+  <script src="js/viewer_engine.js"></script>
+  <script src="data/trailer_data.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. 渲染頂部導航
+      renderGlobalHeader('trailer');
+
+      // 2. 渲染鏡頭清單
+      const container = document.getElementById("shots-container");
+      if (typeof trailerData !== 'undefined' && trailerData.shots) {
+        container.innerHTML = trailerData.shots.map((shot, idx) => renderShotCard(shot, idx)).join("");
+      } else {
+        container.innerHTML = "<div style='color: #ef4444; padding: 20px;'>前導片數據載入異常，請檢查 data/trailer_data.js</div>";
+      }
+    });
+
+    // 批次複製全部 Prompt
+    function copyAllTrailerPrompts(btn) {
+      if (!trailerData || !trailerData.shots) return;
+      const allText = trailerData.shots.map(s => `// [${s.id} - ${s.type} (${s.dur})] ${s.desc}\n${s.prompt}`).join("\n\n----------------------------------------\n\n");
+      copyToClipboard(allText, btn, "已一鍵複製全部 12 鏡前導片 Prompt！");
+    }
+
+    // 複製全域負向詞
+    function copyNegativePrompt(btn) {
+      const neg = "Negative prompt (for SD / Flux / Midjourney): cropped limbs, cut-off legs, feet out of frame, touching borders, text, watermark, signature, bad anatomy, deformed, visual clutter, busy texture, noisy surface, fragmented details, cluttered gravel, micro-pebbles, pinecone texture, over-textured, messy details, old man, oily skin, greasy sheen, sweaty gloss, plastic skin, wax figure, specular hot spots, white glitter specks, lens flare, glossy highlights, 3d render shine, blown-out highlights, excessive specular reflection, gritty overlay, sandpaper texture, speckled skin, micro-gravel, dirty speckled artifacts, excessive surface noise";
+      copyToClipboard(neg, btn, "已複製全域消光去油防雜亂負向提示詞！");
+    }
+  </script>
+</body>
+</html>

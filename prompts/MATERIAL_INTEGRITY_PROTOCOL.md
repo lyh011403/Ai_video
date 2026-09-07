@@ -17,7 +17,7 @@
    - 密密麻麻的凹凸砂粒在頂光與環境光下，會產生無數微觀的鏡面反射高光點（Specular Highlights）。
    - 結合漫反射缺失，人眼與模型會將這些反光噪點誤算為「液態黏稠油脂、汗水油膜、塑料高光」，導致嚴重的「AI 油膩感」。
 3. **前置權重壓制負向約束（Prompt Weight Dominance）**：
-   - 當 `rich gritty textures` 位於提示詞開頭（具有最優先解析權重），即使在後續指定了 `smooth unblemished marble` 或在負向加入 `--no over-textured, noisy surface`，正面高權重指令仍會壓制負向排除，導致語意矛盾與邊緣崩潰。
+   - 當 `rich gritty textures` 位於提示詞開頭（具有最優先解析權重），即使在後續指定了 `smooth unblemished marble` 或在負向加入 ``，正面高權重指令仍會壓制負向排除，導致語意矛盾與邊緣崩潰。
 
 ---
 
@@ -37,7 +37,7 @@
 
 3. **【鐵律三】全域負向封鎖防禦網（Universal Anti-Grain Negative Tokens）**
    - 所有鏡頭生成指令必須常態化掛載消光去砂負向詞組：
-     `--no oily skin, greasy sheen, sweaty gloss, plastic skin, wax figure, specular hot spots, white glitter specks, lens flare, glossy highlights, 3d render shine, blown-out highlights, excessive specular reflection, gritty overlay, sandpaper texture, speckled skin, micro-gravel, dirty speckled artifacts, excessive surface noise`
+     ``
 
 ---
 
@@ -60,13 +60,13 @@
 #### 案例 1：重裝工人對峙（防手背與衣服噴灑黏油與沙礫）
 - **規範 Prompt**：
   ```text
-  Cinematic two-shot, an enraged heavy-set warehouse foreman slamming his dry calloused hand onto a cold steel table shouting aggressively, while on the opposite side the calm 26-year-old dispatcher (Lu Yuan) looks up with icy piercing eyes, scattering paper sheets, cold industrial dispatch room background with diffuse fluorescent light, dry weathered skin, natural pores, matte skin texture, powdery dust particles, dark suspense thriller aesthetic, 35mm film grain, muted dynamic range --ar 16:9 --v 6.1 --style raw --no oily skin, greasy sheen, sweaty gloss, plastic skin, wax figure, specular hot spots, white glitter specks, lens flare, glossy highlights, 3d render shine, blown-out highlights, gritty overlay, sandpaper texture, speckled skin
+  Cinematic two-shot, an enraged heavy-set warehouse foreman slamming his dry calloused hand onto a cold steel table shouting aggressively, while on the opposite side the calm 26-year-old dispatcher (Lu Yuan) looks up with icy piercing eyes, scattering paper sheets, cold industrial dispatch room background with diffuse fluorescent light, dry weathered skin, natural pores, matte skin texture, powdery dust particles, dark suspense thriller aesthetic, 35mm film grain, muted dynamic range  --v 6.1 --style raw 
   ```
 
 #### 案例 2：神祇角色·蓐收古尊（防白玉神軀與面具被侵蝕出網狀碎石斑）
 - **規範 Prompt**：
   ```text
-  (Masterpiece, dark anime 3D cinematic aesthetic:1.2), atmospheric volumetric lighting, fine-grain photographic detail, clear material definitions, dramatic low-angle hero shot of towering 12-meter celestial inquisitor god (Ru Shou), seamless monolithic polished Parthenon white marble torso with smooth unblemished skin and zero cracks, serene carved white jade executioner mask, contrasting with mutated dark bronze vertebral armor on right shoulder anchoring a monumental 18-meter guillotine halberd, directional soft neutral lighting, authentic milky white nephrite marble and dark forged bronze metallurgy, broad clean surfaces, 8k resolution --ar 16:9 --v 6.1 --style raw --no oily skin, plastic shine, stone cracks, sandpaper texture, gritty overlay, noisy surface, speckled skin, dirty artifacts, micro-gravel
+  (Masterpiece, dark anime 3D cinematic aesthetic:1.2), atmospheric volumetric lighting, fine-grain photographic detail, clear material definitions, dramatic low-angle hero shot of towering 12-meter celestial inquisitor god (Ru Shou), seamless monolithic polished Parthenon white marble torso with smooth unblemished skin and zero cracks, serene carved white jade executioner mask, contrasting with mutated dark bronze vertebral armor on right shoulder anchoring a monumental 18-meter solid bronze halberd with sleek polished mirror-like heavy blade, directional soft neutral lighting, authentic milky white nephrite marble and dark forged bronze metallurgy, broad clean surfaces, 8k resolution  --v 6.1 --style raw 
   ```
 
 ---
@@ -77,5 +77,21 @@
 - [ ] 開頭是否含有 `rich gritty textures`？如有，立即刪除。
 - [ ] 描寫人物緊張時是否使用了 `sweaty`？如有，改為 `dry weathered` 或配合消光約束。
 - [ ] 神聖、白玉或光滑物件是否明確聲明了 `unblemished, seamless, zero cracks`？
-- [ ] 結尾是否完整掛載 `--no oily skin, ... gritty overlay, sandpaper texture` 負向遮蔽組？
+- [ ] 結尾是否完整掛載 `` 負向遮蔽組？
 - [ ] 是否開啟 `--style raw` 以抑制 Midjourney 內建過度高光？
+
+
+---
+
+## 三、 GPT (DALL·E 3 / GPT-4o) 自然語言生圖防退行鐵律
+
+1. **零 CLI 標籤鐵律 (Zero Midjourney Tags)**：
+   - 嚴禁在提示詞中出現 ``、`--v 6.1`、`--style raw`、`--stylize`。寬銀幕比例一律以開頭自然語言 `A cinematic widescreen 16:9 shot...` 宣告。
+
+2. **根除「粉色大象」否定詞反噬 (Negation Blindness)**：
+   - GPT 不支援負向提示詞。任何寫入提示詞的否定句或標籤（例如 ``）都會被神經網絡注意力機制直接抓取為正向特徵，反噬生成密集的金屬鐵籠與網格！
+   - 必須 100% 轉為**「正向肯定式材質定義」**：
+     - 正確範例：`solid monolithic forged structure, expansive seamless planes, smooth uninterrupted marble contours, monolithic cast iron bracer`。
+
+3. **三面板三視圖架構 (Three-Panel Prose Turnaround)**：
+   - 採用段落排版結構明晰定義：`The image features three distinct views arranged side-by-side on a flat solid neutral mid-gray background (#808080): - Left panel: ... - Middle panel: ... - Right panel: ...`。
