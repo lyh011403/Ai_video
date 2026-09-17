@@ -1,11 +1,13 @@
 # 《門扉背後：凡人的弒神契約》官方概念前導片分鏡提示詞全集
-## (Official Concept Teaser Production Prompts · Visual Relativity Edition)
+## (Official Concept Teaser Production Prompts · Spatial Orientation & Rigid Anchoring Edition)
 
-> **版本**：CINEDANCE V4 導演級規格 · 雙層架構視覺參照錨定版 (Two-Layer Visual Relativity Edition)  
+> **版本**：CINEDANCE V4 導演級規格 · 空間定向錨點與剛體幾何約束版 (Spatial Orientation & Rigid Body Anchoring Edition)  
 > **規格**：75 秒 · 12 個分鏡 · 0 對白 0 字幕 · ACEScg 色彩空間 · 16:9 原生寬銀幕  
-> **雙層架構原則**：  
-> 1. **工程度量層 (Metadata Layer)**：精確保留 178cm、80cm、100米、12米等嚴格尺寸，供導演、建模師、小說家與資料庫校對。  
-> 2. **生圖提示詞層 (Prompt Layer)**：徹底剔除 `178cm`、`12mm`、`25mm` 等微觀數字，改用「視覺相對參照錨定」（如 `tiny lone silhouette standing dwarfed below the skyscraper-sized gate`），徹底杜絕數字被 AI 誤印為畫面文字（Text Leaking）與注意力稀釋。  
+> **防道具扭曲核心準則**：  
+> 1. **明確相機機位與視線向量**：每鏡開頭宣告精確相機坐標（如 `close 45-degree overhead high-angle, looking down straight-on`），徹底杜絕 AI 隨機採樣詭異視角。  
+> 2. **表面平放接觸面鎖定**：物品底面死死吸附於基準面（`resting flatly seated on desk, upright parallel to the viewer`）。  
+> 3. **剛體連體封裝 (Chassis Lock)**：按鍵與螢幕、筆尖與紙面、扳手鉗口與手柄均封裝為連體剛性結構，嚴禁分散描寫導致 AI 解構分離。  
+> 4. **雙層解耦架構**：工程度量保留於後台 Metadata，生圖 Prompt 採用視覺相對參照錨定，徹底杜絕數字被誤印為浮水印（Text Leaking）。  
 
 ---
 
@@ -27,63 +29,67 @@
 
 ---
 
-## 逐鏡提示詞與音響工程規格書 (S01 - S12)
+## 逐鏡提示詞與空間幾何定向規格書 (S01 - S12)
 
-### [S01] ECU (電影級微距特寫) · 3.5s · 固定微距淺景深 (Static Macro Shallow Focus)
+### [S01] ECU (電影級微距特寫) · 3.5s · 45度俯角正對微距 (45-Degree Overhead Straight-on Macro)
 - **所屬章節幕次**：第 1 幕：凡人算力與風雪起點
+- **空間幾何與定向錨點 (Spatial Orientation Rig)**：45度俯視機位 + 桌面平放剛體封裝 (鍵盤下半部 / 傾斜螢幕上半部同體)
 - **官方嚴格物理度量 (Metadata Rigging)**：
   - 畫面尺度：微觀手部局部 1:1
   - 人物/實體尺度：陸遠 (26歲 / 178cm)
   - 道具/武器規格：工程塑料計算機 (按鍵長寬 12mm)
   - 物理/環境參數：4Hz 機械撞擊頻率
-- **核心畫面描述**：微觀微距：陸遠（26歲/178cm）蒼白修長、指節微結白霜的食指，以每秒 4 次（4Hz）極高頻率精準敲擊工程塑料計算機按鍵。按鍵物理回彈帶動微觀懸浮灰塵與冰晶震顫，背景光學虛化，液晶屏幽綠冷光倒映在疲憊青黑眼眶中。
+- **核心畫面描述**：微觀微距：相機以 45 度俯角正對調度台，工程塑料計算機平整貼死在磨損鋼製調度桌上。計算機為單一剛體外殼：下半部數字鍵盤正對相機，陸遠（26歲/178cm）蒼白修長的食指以每秒 4 次高頻精準垂直敲擊；上半部一體式傾斜綠色液晶螢幕微弱閃爍。按鍵物理回彈帶動微觀懸浮灰塵與冰晶震顫，背景光學虛化。
 - **音效工程 (Foley & Audio)**：塑料計算機按鍵清脆急促的「嗒、嗒、嗒」物理回彈脆響 (4Hz)，遠處柴油發電機低沉底噪
-- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 視覺參照錨定)**：
+- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 空間定向剛體鎖定)**：
 ```text
-A cinematic widescreen 16:9 extreme macro close-up with shallow depth of field: Slender frostbitten pale fingers of a lean young Asian tactical dispatcher rapidly clicking worn plastic numeric keys on a compact desktop calculator on a scratched industrial steel desk. The mechanical rebound of the buttons stirs airborne micro-dust motes and tiny floating ice crystals illuminated by a cool overhead tungsten cone light. In the soft-focus background, the faintly glowing green LCD display flickers with dense mathematical formulas. Authentic skin subsurface scattering, realistic matte plastic textures, moody chiaroscuro lighting, zero text.
+A cinematic widescreen 16:9 extreme macro close-up with shallow depth of field: The camera is positioned at a close 45-degree overhead high-angle, looking down straight-on at a compact industrial desktop calculator resting flatly seated on a scratched cold steel desk. The calculator's front face is oriented upright and parallel to the viewer, featuring a single unified rigid plastic chassis: the lower half features worn plastic numeric keys being rapidly clicked at 4Hz by the slender frostbitten fingers of a lean young Asian tactical dispatcher, while the upper half houses an integrated angled green LCD screen displaying dense glowing mathematical formulas in soft focus. The mechanical rebound of the buttons stirs airborne micro-dust motes and floating ice crystals under cool overhead tungsten spotlighting. Authentic skin subsurface scattering, realistic matte plastic textures, moody chiaroscuro lighting, zero text.
 ```
 ---
 
-### [S02] MS (緩慢前推聚焦) · 4.5s · 沉穩緩慢前推 (Slow Deliberate Push-in)
+### [S02] MS (緩慢前推聚焦) · 4.5s · 35度側俯推鏡 (35-Degree Side-Angle Push-in)
 - **所屬章節幕次**：第 1 幕：凡人算力與風雪起點
+- **空間幾何與定向錨點 (Spatial Orientation Rig)**：35度側俯視角 + 筆記本平鋪桌面 + 鉛筆60度剛性握持軸線
 - **官方嚴格物理度量 (Metadata Rigging)**：
   - 畫面尺度：人體中景 (腰部以上)
   - 人物/實體尺度：陸遠 (26歲 / 178cm / 消瘦體態)
   - 道具/武器規格：0.5mm 滾花金屬繪圖鉛筆 + A5 黑皮筆記本
   - 物理/環境參數：頂部 4Hz 猩紅緊急警報光
-- **核心畫面描述**：推鏡聚焦：陸遠右手緊握 0.5mm 滾花金屬自動鉛筆，在黑皮筆記本的泛黃方格紙上飛速刻畫受力向量圖與拋物線。筆尖施力過猛刺破紙張纖維；調度大廳長條日光燈電壓驟降爆閃，整片空間驟然轉為 4Hz 血色緊急警報照明，如血刃割過蒼白病容。
+- **核心畫面描述**：推鏡聚焦：相機以 35 度側俯視角聚焦手部與紙面交會點。黑皮筆記本平整攤開鋪在調度桌面上，陸遠右手以標準 60 度繪圖角度緊握 0.5mm 滾花金屬自動鉛筆，在泛黃方格紙上飛速刻畫受力向量圖與拋物線。筆尖垂直施力刺破紙張纖維；頂部長條日光燈爆閃轉為 4Hz 血色緊急警報照明，血光如刀鋒割過蒼白病容。
 - **音效工程 (Foley & Audio)**：石墨筆尖劃破紙張沙沙刺耳聲，日光燈管電壓爆裂滋滋聲，4Hz 紅色警報急促蜂鳴
-- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 視覺參照錨定)**：
+- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 空間定向剛體鎖定)**：
 ```text
-A cinematic widescreen 16:9 medium shot with a slow deliberate push-in: A lean young Asian male dispatcher intensely sketching structural force vectors and parabolic calculus with a knurled silver mechanical drafting pencil into a worn black leather notebook. The fine graphite tip snaps into the textured paper surface under heavy pressure. Overhead industrial fluorescent fixtures flicker violently before bathing the cluttered concrete dispatch office in harsh blood-red emergency alarm lighting, casting dramatic crimson slashes across his angular cheekbones and exhausted dark eyes. Rich filmic contrast, realistic paper texture, zero text.
+A cinematic widescreen 16:9 medium shot with a slow deliberate push-in: The camera is positioned at a low 35-degree side-angle close view, focused straight-on where hand, pencil, and notebook meet. A worn black leather notebook rests flatly seated open on the concrete desk surface. A lean young Asian male dispatcher firmly grips a knurled silver mechanical drafting pencil at a precise 60-degree drafting angle, sketching structural force vectors and parabolic calculus into the paper. The fine graphite tip firmly indents and snaps into the textured fibrous paper under heavy downward pressure. Overhead industrial fluorescent fixtures flicker violently before bathing the cluttered dispatch office in harsh blood-red emergency alarm lighting, casting dramatic crimson slashes across his angular cheekbones and exhausted dark eyes. Rich filmic contrast, realistic paper texture, zero text.
 ```
 ---
 
-### [S03] ELS (史詩大氣慢速後拉) · 5.5s · 大範圍平穩慢速後拉 (Epic Slow Pull-Back Establishing)
+### [S03] ELS (史詩大氣慢速後拉) · 5.5s · 水平後拉大景深 (Horizontal Pull-Back Wide Establishing)
 - **所屬章節幕次**：第 1 幕：凡人算力與風雪起點
+- **空間幾何與定向錨點 (Spatial Orientation Rig)**：水平後拉軸線 + 視平線三分法構圖 + 孤島地標鎖定
 - **官方嚴格物理度量 (Metadata Rigging)**：
   - 畫面尺度：大地理極遠景 (數公里荒原)
   - 人物/實體尺度：無
   - 道具/武器規格：無
   - 物理/環境參數：-40°C 暴風雪
-- **核心畫面描述**：大氣後拉：攝影機平穩穿過挑高 8 米調度大廳結霜破裂的窗戶向外拉升，展現零下 40℃ 漫天黑雪狂暴的末日荒原。寬達 60 米的永達物流轉運大廳如同一座鋼鐵孤島佇立在無邊風雪黑夜中，幾束微弱的黃色叉車警示燈在雪霧中搖曳，天地廣袤而死寂。
+- **核心畫面描述**：大氣後拉：攝影機沿水平視平線平穩穿過挑高 8 米調度大廳結霜破裂的窗戶向外拉升，展現零下 40℃ 漫天黑雪狂暴的末日荒原。寬達 60 米的永達物流轉運大廳如同一座鋼鐵孤島佇立在無邊風雪黑夜中，幾束微弱的黃色叉車警示燈在雪霧中搖曳，天地廣袤而死寂。
 - **音效工程 (Foley & Audio)**：極寒狂暴的黑雪風雪呼嘯聲 (-40°C)，重工業鋼架結構在強風下的金屬扭曲呻吟
-- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 視覺參照錨定)**：
+- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 空間定向剛體鎖定)**：
 ```text
-A cinematic widescreen 16:9 epic wide establishing shot with a smooth slow pull-back: The camera recedes through a jagged frost-encrusted window pane out into the howling sub-zero dark snow blizzard. The massive industrial logistics warehouse stands as a solitary iron citadel in the middle of a vast frozen post-apocalyptic wasteland under swirling black storm clouds. Dim amber hazard rotating beacons on snowbound forklifts pierce faintly through the freezing whiteout fog. Monolithic architectural scale, desaturated cold color palette, realistic atmospheric haze, zero text.
+A cinematic widescreen 16:9 epic wide establishing shot with a smooth slow pull-back: The camera recedes along a horizontal eye-level axis through a jagged frost-encrusted window pane out into the howling sub-zero dark snow blizzard. The massive industrial logistics warehouse stands as a solitary iron citadel in the middle of a vast frozen post-apocalyptic wasteland under swirling black storm clouds. Dim amber hazard rotating beacons on snowbound forklifts pierce faintly through the freezing whiteout fog. Monolithic architectural scale, desaturated cold color palette, realistic atmospheric haze, zero text.
 ```
 ---
 
 ### [S04] ELS (180°滾轉重力倒懸穿梭) · 7.5s · 穿梭機仰角滾轉穿插 (FPV Barrel Roll & Gravity Inversion Ascent)
 - **所屬章節幕次**：第 2 幕：神門降臨與巨物威壓
+- **空間幾何與定向錨點 (Spatial Orientation Rig)**：前景人類剪影 + 中景升天卡車群 + 遠景地平線百米青銅巨門
 - **官方嚴格物理度量 (Metadata Rigging)**：
   - 畫面尺度：神話巨構景觀 · 三重視覺錨定 (100米神門 vs 人類剪影 vs 飄浮重卡)
   - 人物/實體尺度：太古青銅巨門 (高 100 米 / 寬 45 米)
   - 道具/武器規格：無
-  - 物理/環境參數：180° 重力逆轉 (向天空垂直墜落)
+  - 物理/環境參數：標準
 - **核心畫面描述**：【核心保留Cut · 特殊穿梭奇觀】：漫天黑雪荒原上高達 100 米的太古青銅巨門拔地而起碎裂，180 度重力倒懸激發！穿梭機貼地掠過陸遠（178cm）身側，隨即旋轉 180 度倒置跟隨倒懸重力，高速穿梭於向天空垂直墜落的數十輛 16 米長重型卡車與崩裂鋼架縫隙之間，100 米巨門裂開萬丈熾白神光！
 - **音效工程 (Foley & Audio)**：重力剪切引發的大氣真空爆鳴，100米青銅巨門咬合撼天雷鳴，數十輛鋼鐵重卡倒懸騰空呼嘯
-- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 視覺參照錨定)**：
+- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 空間定向剛體鎖定)**：
 ```text
 A cinematic widescreen 16:9 gravity-inversion FPV tracking shot with a smooth 180-degree barrel roll: On the distant horizon, a colossal archaic bronze divine gate, towering like a monumental 100-meter skyscraper, violently fractures and erupts from the frozen earth, unleashing blinding 6500K celestial radiance and thick volumetric god rays. In extreme scale contrast, the tiny lone silhouette of a mortal dispatcher stands dwarfed on the cracked permafrost in foreground. Inverted gravity sends massive heavy semi-trucks and tangled industrial steel girders falling upward into the swirling dark storm clouds. Anti-gravity dust motes and black snow crystals spiral upward. Epic cosmic scale, authentic weathered green bronze patina, pristine cinematic lighting, zero text.
 ```
@@ -91,6 +97,7 @@ A cinematic widescreen 16:9 gravity-inversion FPV tracking shot with a smooth 18
 
 ### [S05] WS (史詩巨構低角度大仰拍) · 6.5s · 地面低角度緩慢前推 (Epic Low-Angle Monumental WS)
 - **所屬章節幕次**：第 2 幕：神門降臨與巨物威壓
+- **空間幾何與定向錨點 (Spatial Orientation Rig)**：貼地仰角機位 + 柱狀巨足垂直落點 + 肩部角峰對稱排列
 - **官方嚴格物理度量 (Metadata Rigging)**：
   - 畫面尺度：泰坦山嶽尺度 (長 100 米 / 高 60 米)
   - 人物/實體尺度：寒冬巨擘·霜海行者 (四足冰川巨獸：長 100 米、高 60 米)
@@ -98,113 +105,121 @@ A cinematic widescreen 16:9 gravity-inversion FPV tracking shot with a smooth 18
   - 物理/環境參數：16Hz 次聲波衝擊環 (同心圓直徑 200 米)
 - **核心畫面描述**：泰坦威壓：攝影機置於凍土極低視角緩慢推進，長達 100 米、高達 60 米的四足冰川巨獸【霜海行者】自暴風雪深處踏出萬噸巨步踩碎萬載凍土。單塊厚達 1.2 米的六角透光冰晶重甲覆蓋全身，雙肩兩座蜂窩中空角峰高頻震顫，擴散出一圈圈直徑達 200 米的肉眼可見白色 16Hz 次聲波衝擊環，遠方整座冰川山脈瞬間連鎖粉碎！
 - **音效工程 (Foley & Audio)**：百米巨獸四足踏碎凍土的地震轟鳴，16Hz 次聲波震顫胸腔的低頻壓迫，冰川山脈坍塌連鎖巨響
-- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 視覺參照錨定)**：
+- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 空間定向剛體鎖定)**：
 ```text
 A cinematic widescreen 16:9 monumental low-angle wide shot with a slow forward creep: A colossal quadrupedal glacial titan Frost Colossus, massive as a moving mountain ridge, strides through the apocalyptic blizzard. Its colossal columnar pillar legs crush the frozen permafrost into powder with geological force. Translucent blue hexagonal ice armor plates cover its titanic frame. From twin hollow honeycomb acoustic horn spires rising high on its shoulders, concentric visible white infrasonic shockwave rings blast outward across the landscape, shattering distant mountain glaciers in catastrophic chain reactions. Overwhelming titanic scale, deep cinematic depth of field, photorealistic crystalline textures, zero text.
 ```
 ---
 
-### [S06] WS (倒懸神殿王座緩慢仰推) · 6.0s · 倒懸殿堂中軸仰角慢推 (Inverted Throne Slow Cinematic Push)
+### [S06] WS (倒懸王座5°微弧推進·雙龍探首) · 6.0s · 5°平滑微弧軌道推進 (Subtle 5-Degree Arc Orbit Push-in)
 - **所屬章節幕次**：第 2 幕：神門降臨與巨物威壓
+- **空間幾何與定向錨點 (Spatial Orientation Rig)**：5°微弧視差推進(禁止Z軸翻滾) + 前景長鉞向左側滑虛化 + 中景神軀微抬眼 + 背景雙龍向前探首
 - **官方嚴格物理度量 (Metadata Rigging)**：
   - 畫面尺度：神祇帝王尺度 (神尊高 12 米 / 雙龍長 30 米 / 長鉞 20 米)
-  - 人物/實體尺度：執鉞刑殺·蓐收古尊 (高 12 米 / 半袒白玉神肌)
-  - 道具/武器規格：左耳黑蛇銜黃銅因果天平 (天平臂長 1.5 米)
+  - 人物/實體尺度：執鉞刑殺·蓐收古尊 (高 12 米 / 半袒白玉神肌蓄勢微動)
+  - 道具/武器規格：20 米機關長鉞 (齒輪咬合 / 前景視差側滑)
   - 物理/環境參數：標準
-- **核心畫面描述**：【蓐收古尊全新神相 · 君王威嚴】：空間重力倒轉，高達 12 米的【執鉞刑殺·蓐收古尊】端正屹立於倒垂王座階梯之上！身後兩側長達 30 米的黑金巨龍破空盤旋怒視，半袒露健壯白玉神肌軀幹與古典垂眸玉面散發神聖威嚴；左耳黑蛇銜咬 1.5 米黃銅因果天平，右手持 20 米機關齒輪長鉞斜立，倒垂黑石方尖碑襯托絕對君王威壓。
-- **音效工程 (Foley & Audio)**：空間引力共振低頻重音，30米黑金伴生雙龍低沉金屬龍吟，天平齒輪咬合聲，20米鉞刀劃破空間尖銳音頻
-- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 視覺參照錨定)**：
+- **核心畫面描述**：【蓐收古尊與伴生雙龍 · 5°微弧立體視差】：空間重力倒轉，攝影機以 0.15x 慢速沿中軸劃出 5 度極微小弧線向前推進，鏡頭光軸牢固鎖定神尊玉面（嚴禁自轉翻滾）。前景 20 米機關長鉞產生向左側滑的立體視差虛化；中景 12 米高【執鉞刑殺·蓐收古尊】古典玉面微抬 5 度，眼窩亮起暗金微光，白玉胸肌隨神性呼吸起伏，右手長鉞微沉激發齒輪自轉；背景 30 米黑金雙龍向前探出猙獰龍首俯視鏡頭，龍鱗如魚鰓開合收緊，喉間暗金低吼，極具動態透視與君王壓迫感。
+- **音效工程 (Foley & Audio)**：雙龍金屬龍吟低吼，黑金龍鱗緊繃開合摩擦聲，20米長鉞齒輪咬合沉悶重音，空間引力共振低頻轟鳴
+- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 5°微弧視差動態鎖定)**：
 ```text
-A cinematic widescreen 16:9 dignified low-angle wide shot with a smooth slow push-in: The colossal celestial executioner god Ru Shou stands in sovereign imperial authority atop the steps of an inverted cosmic execution basilica where ceiling and floor are flipped. Towering over the dais, the god is flanked symmetrically by dual massive coiled dark-gold dragons erupting from behind his back, their fierce serpentine heads hovering defensively behind his left and right shoulders with gleaming metallic scales. The god features a powerful muscular semi-nude torso sculpted of flawless polished white marble, draped below the waist in layered archaic dark bronze ceremonial robes. His head is adorned with an immaculate serene oriental jade mask with downcast gaze and empty pitch-black eye hollows, haloed by a radiant metallic celestial wheel ring. A coiled black serpent winds around his neck and emerges at his left ear to suspend a balanced brass scale from its jaws. In his right hand he grips a towering mechanical gear-driven bronze execution poleaxe planted against the stone floor. Monolithic inverted basalt obelisks in background, volumetric chiaroscuro lighting, sovereign godhead majesty, sharp focus, zero text.
+A cinematic widescreen 16:9 dignified shot with a smooth 5-degree subtle curved arc push-in, strictly zero camera roll, shallow depth of field: Inside an inverted cosmic execution basilica where floor and ceiling are flipped, the camera glides along a gentle 5-degree orbital arc forward. Foreground edge shows the blurred bronze mechanical poleaxe shifting laterally with pronounced optical parallax. Midground center is tack-sharp focused on the 12-meter celestial executioner god Ru Shou subtly awakening: his flawless pure white jade marble torso expands in powerful deep breathing, his classical jade visage tilts slowly upward revealing glowing golden pinpricks in hollow sockets, while his ornate back gear halo begins counter-rotating with soft sparks. Flanking him from the atmospheric background shadows, dual titanic 30-meter black-gold dragons slowly lean their massive horned heads forward over his shoulders, dark metallic scales bristling along their coiling bodies as they loom downward in lethal tension. Volumetric chiaroscuro lighting, visceral orbital parallax, cinematic photorealism, zero text.
 ```
+
 ---
 
 ### [S07] WS (地熱裂隙低視角震撼仰拍) · 5.0s · 地熱裂隙低角度定點仰視 (Low-Angle Magma Rift WS)
 - **所屬章節幕次**：第 3 幕：初火小隊硬核反擊
+- **空間幾何與定向錨點 (Spatial Orientation Rig)**：低機位仰視玄武岩峭壁 + 前爪重壓神球垂直觸地線 + 兩側百米岩漿噴泉
 - **官方嚴格物理度量 (Metadata Rigging)**：
-  - 畫面尺度：神獸與地質尺度 · 力量碰撞 (神獸高 8 米長 14 米 / 黑鐵神球直徑 2.2 米)
+  - 畫面尺度：神獸與地質尺度 (神獸高 8 米長 14 米 / 黑鐵神球直徑 2.2 米)
   - 人物/實體尺度：太古辟邪·燭荒古尊 (形態一：高 8 米、長 14 米 / 玄武岩饕餮甲)
-  - 道具/武器規格：純黑鐵地熱律法神球 (直徑 2.2 米 / 重 43 噸)
+  - 道具/武器規格：無
   - 物理/環境參數：標準
 - **核心畫面描述**：熔岩巨獸：低機位仰視地下熔爐裂谷，高 8 米、長 14 米的太古辟邪神獅【燭荒古尊】周身冷鍛青銅饕餮神甲覆蓋，傲然立於沸騰玄武岩峭壁。神獅暴怒右前爪踏碎直徑 2.2 米的地熱黑鐵神球，地底噴湧數道高達 100 米的金色岩漿火柱，將千度熔爐照耀如白晝！
 - **音效工程 (Foley & Audio)**：8米神獅震撼地核的沉重咆哮，2.2米黑鐵神球受壓變形的金屬悶響，100米岩漿狂暴噴發烈焰呼嘯
-- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 視覺參照錨定)**：
+- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 空間定向剛體鎖定)**：
 ```text
 A cinematic widescreen 16:9 powerful low-angle wide shot: The colossal archaic guardian stone lion god Zhu Huang perches proudly on jagged basalt cliffs inside a subterranean magma abyss, clad in heavy cold-forged dark bronze taotie armor. Its incandescent molten mane flows like liquid gold. The gigantic beast slams its heavy stone right claw down onto a massive solid black-iron sphere resting on the rock floor, crushing it into fragments and triggering towering golden lava geysers erupting from surrounding chasms into the high cavern ceiling. Dramatic fire illumination, intense thermal atmosphere, visceral raw mythic power, zero text.
 ```
 ---
 
-### [S08] MS (武器第一人稱撞擊視角) · 5.0s · 扳手前端第一人稱鎖定 (Wrench-Mounted Weapon-Cam Impact)
+### [S08] MS (武器第一人稱撞擊視角) · 5.0s · 扳手鉗口剛性鎖定機位 (Rigid-Mounted Wrench Jaw POV)
 - **所屬章節幕次**：第 3 幕：初火小隊硬核反擊
+- **空間幾何與定向錨點 (Spatial Orientation Rig)**：相機固定於扳手前鉗口軸線 + 周鐵雙手剛性握柄 + 垂直迎擊神爪力線
 - **官方嚴格物理度量 (Metadata Rigging)**：
   - 畫面尺度：武器第一人稱近身交鋒 (80cm 扳手 vs 8米巨獸爪)
   - 人物/實體尺度：周鐵 (45歲 / 185cm / 108kg / 粗獷重工體魄)
-  - 道具/武器規格：80cm 重型鉻釩鋼管子扳手 (鏡頭固定於前端鉗口)
+  - 道具/武器規格：80cm 重型鉻釩鋼管子扳手 (鏡頭剛性鎖定於前端鉗口)
   - 物理/環境參數：標準
-- **核心畫面描述**：【特種機位 · 武器第一人稱】：鏡頭直接安裝在 80cm 鉻釩鋼重管子扳手前端鉗口！跟隨周鐵（45歲/185cm/108kg）雙臂 25mm 厚生鐵護臂狂暴上架，視野中黑紅太古神爪遮天蔽日砸下！「鐺————！」火星如熔岩暴雨般直接糊滿鏡頭，伴隨合金柄崩斷脆鳴，鏡頭隨斷扳手殘片在空中劇烈翻滾！
+- **核心畫面描述**：【特種機位 · 武器第一人稱】：鏡頭剛性安裝在 80cm 鉻釩鋼重管子扳手前端鉗口軸線上！前景中帶齒鋼鉗口鎖定在畫面正中，周鐵（45歲/185cm/108kg）雙手緊握合金手柄，雙臂 25mm 厚生鐵護臂狂暴上架，視野中黑紅太古神爪遮天蔽日砸下！「鐺————！」火星如熔岩暴雨般直接糊滿鏡頭，伴隨合金柄崩斷脆鳴，鏡頭隨斷扳手殘片在空中劇烈翻滾！
 - **音效工程 (Foley & Audio)**：80cm重扳手與生鐵護臂硬架巨響「鐺————！」，合金柄崩斷脆鳴「咔嚓！」，火星噴濺劈啪聲
-- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 視覺參照錨定)**：
+- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 空間定向剛體鎖定)**：
 ```text
-A cinematic widescreen 16:9 first-person weapon-mounted camera shot: The camera is affixed directly to the forward steel jaw of a heavy industrial pipe wrench. Through the foreground view of the scarred steel tool, a hulking heavy laborer thrusts upward with his bolted raw cast-iron vambraced forearms to intercept the titanic descending molten stone claw of a colossal guardian beast. At the point of impact, a blinding shower of white-orange friction sparks completely engulfs the lens. As the steel wrench shaft fractures under violent kinetic stress, the camera tumbles and spins through the smoke-filled air. Visceral physical impact, authentic metal stress failure, intense action cinematography, zero text.
+A cinematic widescreen 16:9 first-person weapon-mounted camera shot: The camera is rigid-mounted directly onto the forward steel jaw of an 80cm heavy industrial pipe wrench, looking straight outward along the tool's axis. Through the immediate foreground view of the scarred steel teeth locked in frame, a hulking heavy laborer thrusts upward with his bolted raw cast-iron vambraced forearms to intercept the titanic descending molten stone claw of a colossal guardian beast. At the point of impact, a blinding shower of white-orange friction sparks completely engulfs the lens. As the steel wrench shaft fractures under violent kinetic stress, the camera tumbles and spins through the smoke-filled air. Visceral physical impact, authentic metal stress failure, intense action cinematography, zero text.
 ```
 ---
 
-### [S09] MCU (高速工匠側拍特寫) · 4.5s · 側拍高速追焦 (High-Speed Action Profile MCU)
+### [S09] MCU (高速工匠側拍特寫) · 4.5s · 90度正側面高速追焦 (90-Degree Locked Profile Close-up)
 - **所屬章節幕次**：第 3 幕：初火小隊硬核反擊
+- **空間幾何與定向錨點 (Spatial Orientation Rig)**：90度正側面鎖定相機 + 牙齒咬住引信緊繃受力線 + 噴管水平正對神甲
 - **官方嚴格物理度量 (Metadata Rigging)**：
   - 畫面尺度：人體中近景 · 局部工匠特寫
   - 人物/實體尺度：徐昂 (38歲 / 175cm / 定向爆破工程師)
-  - 道具/武器規格：高壓液態氮 (-196°C) + 黃銅拉火環引信 (環徑 30mm)
-  - 物理/環境參數：熱應力馬氏體冷脆蛛網裂紋 (2000°C玄武岩對撞-196°C液氮)
-- **核心畫面描述**：工匠爆破：大光圈側拍特寫徐昂（38歲/175cm）滿是煤灰燙傷的剛毅臉龐與防風鏡反光。他牙齒死死咬住 30mm 黃銅引信拉火環猛力一扯，零下 196°C 液氮高壓噴管零距離撞擊神尊 2000°C 玄武岩神甲！白熾氣霧與馬氏體冷脆蛛網裂紋在鏡頭前連鎖炸裂，冰火對撞炸出深藍冷光。
+  - 道具/武器規格：高壓液態氮 (-196°C) + 30mm 黃銅拉火環引信
+  - 物理/環境參數：標準
+- **核心畫面描述**：工匠爆破：相機以 90 度正側面水平鎖定特寫。徐昂（38歲/175cm）滿是煤灰燙傷的剛毅側臉固定在畫面中央，牙齒死死咬住 30mm 黃銅引信拉火環猛力向後扯成直線緊繃！前景中高壓液氮噴管口水平正對神甲零距離噴射，零下 196°C 白熾低溫氣霧狂暴急凍 2000°C 玄武岩神甲，馬氏體冷脆蛛網裂紋在鏡頭前連鎖炸裂，冰火對撞炸出深藍冷光。
 - **音效工程 (Foley & Audio)**：黃銅引信齒輪咬合脆響，-196°C 液氮高壓噴射尖鳴，2000°C 神甲熱應力急脆爆裂「砰啪啪！」
-- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 視覺參照錨定)**：
+- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 空間定向剛體鎖定)**：
 ```text
-A cinematic widescreen 16:9 high-speed action profile shot: Tight medium close-up of a weathered demolition engineer, his face caked in soot and grime, amber protective goggles reflecting searing lava flares. His jaw clenches with fierce resolve as his teeth violently rip a brass detonator pull-fuse ring. At point-blank range, a heavy industrial dispenser blasts an intense jet of sub-zero liquid nitrogen vapor directly against the glowing molten basalt armor of the beast. Violent thermal shock fractures erupt into branching cyan crystalline cracks across the brittle stone shell amidst billowing clouds of freezing white cryo-vapor. Masterful lighting contrast, razor-sharp textures, zero text.
+A cinematic widescreen 16:9 high-speed action profile shot with a locked 90-degree lateral camera angle: Tight medium close-up of a weathered demolition engineer, his face caked in soot and grime, amber protective goggles reflecting searing lava flares. His soot-stained jaw clenches with fierce resolve as his teeth violently rip a brass detonator pull-fuse ring in rigid mechanical tension. In the immediate foreground, a heavy industrial dispenser nozzle is aimed horizontally straight-on, blasting an intense jet of sub-zero liquid nitrogen vapor directly against the glowing molten basalt armor of the beast at point-blank range. Violent thermal shock fractures erupt into branching cyan crystalline cracks across the brittle stone shell amidst billowing clouds of freezing white cryo-vapor. Masterful lighting contrast, razor-sharp textures, zero text.
 ```
 ---
 
-### [S10] MS (三人多維流體運鏡) · 5.5s · 流暢戰術協同跟隨 (Fluid Tactical Multi-Tracker)
+### [S10] MS (三人多維流體運鏡) · 5.5s · 三人橫向流體協同運鏡 (Horizontal Trinity Tracking Arc)
 - **所屬章節幕次**：第 3 幕：初火小隊硬核反擊
+- **空間幾何與定向錨點 (Spatial Orientation Rig)**：左側冰刀接觸面折角火星 + 中央懷錶水平托握90度雙蓋展開 + 右側合約垂直拍擊
 - **官方嚴格物理度量 (Metadata Rigging)**：
   - 畫面尺度：三人戰術群像中景 (立體空間分佈)
   - 人物/實體尺度：無
   - 道具/武器規格：無
   - 物理/環境參數：標準
-- **核心畫面描述**：戰術走廊：流暢鏡頭動態貫通三人防線——左側林小滿（162cm）鈦合金冰刀在結霜鋼架滑移切出折角火星；中景宋嵐（168cm）按住直徑 50mm 古董銀懷錶展開六角幽藍心靈偏轉護盾彈開精神衝擊；右側姜淮（180cm）滿臉鮮血將金色布林合約拍碎撕裂神域重力，三維力學通道瞬間鎖定神核！
+- **核心畫面描述**：戰術走廊：流暢鏡頭動態橫向貫通三人防線——左側林小滿（162cm）鈦合金冰刀在結霜鋼架滑移切出折角火星；中景宋嵐（168cm）掌心水平托住直徑 50mm 古董銀懷錶，圓形雙蓋 90 度展開，精準機芯正對鏡頭展開六角幽藍心靈偏轉護盾；右側姜淮（180cm）滿臉鮮血將金色布林合約垂直拍碎在鋼架上撕裂神域重力，三維力學通道瞬間鎖定神核！
 - **音效工程 (Foley & Audio)**：鈦合金冰刀切擦冰層尖嘯，滑索鋼纜呼嘯，50mm 懷錶心靈護盾偏折震波音，合約符文撕裂聲
-- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 視覺參照錨定)**：
+- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 空間定向剛體鎖定)**：
 ```text
-A cinematic widescreen 16:9 dynamic ensemble tracking shot: The camera fluidly pans across a coordinated three-person mortal battle line amidst suspended cathedral debris. On the left, an agile young female scout carves a sharp evasive turn on titanium figure skate blades, showering ice sparks. In the center, an intellectual female analyst clicks an antique silver pocket watch open, projecting a glowing hexagonal cyan psionic barrier that deflects distortion shockwaves. On the right, a bloodied corporate lawyer slams an intricate parchment of golden glowing Boolean logic contracts against a steel girder, unraveling gravitational anomaly lines. Rich atmospheric depth, cinematic volumetric smoke, flawless action staging, zero text.
+A cinematic widescreen 16:9 dynamic ensemble tracking shot: The camera fluidly pans across a coordinated three-person mortal battle line amidst suspended cathedral debris. On the left, an agile young female scout carves a sharp evasive turn on titanium figure skate blades, showering ice sparks. In the center, an intellectual female analyst holds an antique silver pocket watch flatly seated in her palm with its circular casing hinged open 90 degrees, projecting a flat geometric hexagonal cyan psionic barrier that deflects distortion shockwaves. On the right, a bloodied corporate lawyer slams an intricate parchment of golden glowing Boolean logic contracts vertically against a steel girder, unraveling gravitational anomaly lines. Rich atmospheric depth, cinematic volumetric smoke, flawless action staging, zero text.
 ```
 ---
 
-### [S11] FS->CU (拋物線極速追隨下衝) · 6.0s · 拋物線主觀下衝追隨 (Apex Parabolic Tracking Arc)
+### [S11] FS->CU (拋物線極速追隨下衝) · 6.0s · 過肩俯衝下壓微距 (Over-the-Shoulder Diving Thrust Macro)
 - **所屬章節幕次**：第 3 幕：初火小隊硬核反擊
+- **空間幾何與定向錨點 (Spatial Orientation Rig)**：過肩主觀視角 + 斷扳手垂直剛性下衝力線 + 正中貫穿神核
 - **官方嚴格物理度量 (Metadata Rigging)**：
   - 畫面尺度：動態全景推至極限特寫 (178cm 人類刺入 1米神核)
   - 人物/實體尺度：陸遠 (26歲 / 178cm / 右臂完全紫金晶格化)
   - 道具/武器規格：周鐵折斷的半截鉻釩鋼管子扳手 (斷刃長 40cm)
   - 物理/環境參數：標準
-- **核心畫面描述**：【高潮爆點 · 拋物線下衝】：陸遠（178cm）右臂紫金晶格完全爆發蔓延，沿精算力學拋物線頂點踏空躍出！攝影機自全景高速大弧線追隨下衝——陸遠雙手高舉周鐵帶血的 40cm 斷鋼扳手，紫金晶臂全力下壓，如鋼釘般狠狠貫穿燭荒神尊胸膛開裂的直徑 1 米 2500°C 白熾神核！刺目金芒與超新星金色光環席捲全場！
+- **核心畫面描述**：【高潮爆點 · 拋物線下衝】：攝影機採過肩俯衝視角緊隨陸遠。陸遠右臂紫金晶格完全爆發蔓延，沿精算力學拋物線頂點踏空躍出！雙手牢牢握死周鐵折斷的 40cm 鉻釩鋼斷管子扳手，齒牙鋒利斷口沿剛性垂直力線全力下壓，如鋼釘般直接貫穿燭荒神尊胸膛開裂處暴露的直徑 1 米白熾地熱神核！刺目金芒與超新星金色光環席捲全場！
 - **音效工程 (Foley & Audio)**：斷鋼扳手貫穿直徑1米神核金屬撕裂爆鳴，神軀崩解超新星衝擊波，晶體爆發刺耳音爆
-- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 視覺參照錨定)**：
+- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 空間定向剛體鎖定)**：
 ```text
-A cinematic widescreen 16:9 high-speed tracking arc shot from wide to close-up: A young tactical dispatcher leaps from the apex of a calculated trajectory across shattered floating stone tiers, his entire right arm and shoulder fully encased in glowing geometric violet-gold crystal facets. The camera plunges downward in a dynamic arc following his descent as he grips the jagged, bloody severed head of a broken heavy steel pipe wrench with both hands, driving it like an iron spike directly into the incandescent glowing white-hot singularity core exposed inside the cracked chest of the colossal stone beast. Blinding golden energy discharges and expanding radial shockwaves erupt outward. Visceral climax of deicide, crisp debris physics, epic motion clarity, zero text.
+A cinematic widescreen 16:9 high-speed tracking arc shot from wide to close-up with an over-the-shoulder diving angle: A young tactical dispatcher leaps from the apex of a calculated trajectory across shattered floating stone tiers, his entire right arm and shoulder fully encased in glowing geometric violet-gold crystal facets. His hands grip the jagged, bloody severed head of a broken heavy steel pipe wrench with unyielding rigidity, driving its fractured steel teeth in a direct vertical thrust line straight down into the incandescent glowing white-hot singularity core exposed inside the cracked chest of the colossal stone beast. Blinding golden energy discharges and expanding radial shockwaves erupt outward. Visceral climax of deicide, crisp debris physics, epic motion clarity, zero text.
 ```
 ---
 
-### [S12] ECU (極限微距安靜定格) · 6.5s · 極致死寂定格收束 (Static Macro Deicide Freeze)
+### [S12] ECU (極限微距安靜定格) · 6.5s · 垂直正向極限微距 (Perpendicular Straight-on Extreme Macro)
 - **所屬章節幕次**：第 4 幕：戰場死寂與契約定格
+- **空間幾何與定向錨點 (Spatial Orientation Rig)**：垂直水平機位 + 鉛筆直立於紙面微距 + 大拇指按壓機械按鍵剛性軸線
 - **官方嚴格物理度量 (Metadata Rigging)**：
-  - 畫面尺度：面部極限微距 (五官局部 1:1)
+  - 畫面尺度：面部與筆尖極限微距 (五官局部 1:1)
   - 人物/實體尺度：陸遠 (26歲 / 178cm / 蒼白冷峻面部)
   - 道具/武器規格：0.5mm 滾花金屬自動鉛筆
   - 物理/環境參數：標準
-- **核心畫面描述**：【終局收束 · 動態驟停】：狂暴風雪與爆炸金芒驟然收束，天地陷入絕對死寂。鏡頭極限微距凝視陸遠（178cm）血痕斑斑的蒼白臉龐與深陷青黑的冰冷眼眸。右手大拇指輕輕按動 0.5mm 金屬自動鉛筆頂部——「咔噠」。一滴深紅鮮血自筆尖滴落在方格紙公式末端。畫面瞬間切入純黑，冷軋鋼金屬片名破冰定格：《門扉背後：凡人的弒神契約》。
+- **核心畫面描述**：【終局收束 · 動態驟停】：狂暴風雪與爆炸金芒驟然收束，天地陷入絕對死寂。相機以垂直水平正向機位極限微距鎖定：0.5mm 滾花金屬自動鉛筆直立懸於方格筆記本公式上方，陸遠血痕斑斑的蒼白臉龐倒映在金屬筆身。右手大拇指沿鉛筆中軸剛性垂直按壓頂部按鈕——「咔噠」。一滴深紅鮮血自筆尖垂直滴落在公式末端。畫面瞬間切入純黑，冷軋鋼金屬片名破冰定格：《門扉背後：凡人的弒神契約》。
 - **音效工程 (Foley & Audio)**：0.5mm 自動鉛筆「咔噠」機械脆響，單滴鮮血落紙微響，瞬切死寂，片名破冰巨響
-- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 視覺參照錨定)**：
+- **GPT 原生自然語言生圖提示詞 (16:9 Widescreen Prose Prompt · 空間定向剛體鎖定)**：
 ```text
-A cinematic widescreen 16:9 extreme macro close-up in absolute static quietness: All dynamic violence ceases abruptly into dead silence. The camera is locked motionless on the pale, blood-streaked face of a young Asian man, his dark exhausted eyes completely calm. His thumb gently clicks the top button of a tarnished knurled silver mechanical pencil. A single droplet of dark crimson blood falls from the steel pencil tip onto the final calculus formula in his worn notebook in restored stillness. Sudden instantaneous cut to pure black, followed by the monolithic cold-rolled steel title logo shattering through frozen iron: 'BEHIND THE DOORS: THE MORTAL'S GOD-SLAYING CONTRACT'. Haunting poetic deicide resolution, pristine photographic stillness, zero text overlays.
+A cinematic widescreen 16:9 extreme macro close-up in absolute static quietness with a locked perpendicular straight-on camera angle: All dynamic violence ceases abruptly into dead silence. The camera is locked motionless on the pale, blood-streaked face of a young Asian man, his dark exhausted eyes completely calm. In razor-sharp foreground focus, a tarnished knurled silver mechanical pencil is oriented upright perpendicular to the paper page, its fine steel tip hovering millimeters above the final calculus equation in his worn notebook. A thumb firmly depresses the top metal button with a physical click, releasing a single droplet of dark crimson blood falling straight down from the pencil tip onto the paper in restored stillness. Sudden instantaneous cut to pure black, followed by the monolithic cold-rolled steel title logo shattering through frozen iron: 'BEHIND THE DOORS: THE MORTAL'S GOD-SLAYING CONTRACT'. Haunting poetic deicide resolution, pristine photographic stillness, zero text overlays.
 ```
 ---
