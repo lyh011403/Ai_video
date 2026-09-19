@@ -10927,6 +10927,38 @@ ${char1NameEn}身處畫面視覺軸線，保持嚴謹的透視關係與光學約
     }
 
     // 切換提示詞格式 ('subject' 或 'at_picture')
+    
+    // 單鏡卡片紅框切換函式 (支援 <Subject1> 影視格式 vs @圖片1~@圖片5 原生格式 vs 雙規格並列)
+    function switchSingleShotMode(shotId, mode) {
+      const boxSubject = document.getElementById('box-subject-' + shotId);
+      const boxAtpic = document.getElementById('box-atpic-' + shotId);
+      const btnSubject = document.getElementById('btn-mode-subject-' + shotId);
+      const btnAtpic = document.getElementById('btn-mode-atpic-' + shotId);
+      const btnBoth = document.getElementById('btn-mode-both-' + shotId);
+
+      if (!boxSubject || !boxAtpic) return;
+
+      if (mode === 'subject') {
+        boxSubject.style.display = 'block';
+        boxAtpic.style.display = 'none';
+        if (btnSubject) { btnSubject.style.background = '#059669'; btnSubject.style.color = '#fff'; }
+        if (btnAtpic) { btnAtpic.style.background = 'transparent'; btnAtpic.style.color = '#94a3b8'; }
+        if (btnBoth) { btnBoth.style.background = 'transparent'; btnBoth.style.color = '#94a3b8'; }
+      } else if (mode === 'at_picture') {
+        boxSubject.style.display = 'none';
+        boxAtpic.style.display = 'block';
+        if (btnAtpic) { btnAtpic.style.background = '#0284c7'; btnAtpic.style.color = '#fff'; }
+        if (btnSubject) { btnSubject.style.background = 'transparent'; btnSubject.style.color = '#94a3b8'; }
+        if (btnBoth) { btnBoth.style.background = 'transparent'; btnBoth.style.color = '#94a3b8'; }
+      } else if (mode === 'both') {
+        boxSubject.style.display = 'block';
+        boxAtpic.style.display = 'block';
+        if (btnBoth) { btnBoth.style.background = '#7c3aed'; btnBoth.style.color = '#fff'; }
+        if (btnSubject) { btnSubject.style.background = 'transparent'; btnSubject.style.color = '#94a3b8'; }
+        if (btnAtpic) { btnAtpic.style.background = 'transparent'; btnAtpic.style.color = '#94a3b8'; }
+      }
+    }
+
     function switchPromptFormat(fmt) {
       currentPromptFormat = fmt;
       
@@ -13029,18 +13061,46 @@ function createAssetCard(item) {
                   <div class="prompt-content">${escapeHtml(dynamicShotPrompt)}</div>
                 </div>
 
-                <!-- 模組 2: MiniMax / Seedance 影片提示詞 (Video 專用) -->
-                <div class="prompt-box" style="margin-top: 8px; border-color: rgba(16, 185, 129, 0.3);">
-                  <div class="prompt-header" style="background: rgba(16, 185, 129, 0.1); display: flex; justify-content: space-between; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: 6px;">
-                      <span style="color: #6ee7b7; font-size: 11px; font-weight: 700;">🎬 本鏡多模態影片動態 Prompt</span>
-                      <span class="badge badge-emerald" style="font-size: 9px;">${currentPromptFormat === 'subject' ? '<Subject1> 影視格式' : '@圖片1 原生格式'}</span>
-                    </div>
-                    <div style="display: flex; gap: 6px;">
-                      <button class="btn-copy" onclick="copyBoxPrompt(this)" style="font-size: 10.5px;">複製本鏡 Prompt</button>
-                    </div>
+                <!-- 【紅框新增區塊】：單鏡影片提示詞規格切換列 (保留原生 + 支援新影視規範 + 支援雙軌並列) -->
+                <div class="shot-format-switch-bar" data-shot-id="${shot.id || sIdx}" style="margin-top: 10px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 6px; padding: 6px 10px; flex-wrap: wrap; gap: 8px;">
+                  <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: #94a3b8; font-weight: 700;">
+                    <span>⚡ 影片動態 Prompt 規格切換：</span>
                   </div>
-                  <div class="prompt-content" id="single-video-prompt-${shot.id || sIdx}" style="font-size: 11.5px; line-height: 1.5; color: #e2e8f0;">${escapeHtml((currentPromptFormat === 'subject') ? generateSingleShotSubjectPrompt(ch, ep, shot, sIdx) : singleMinimax)}</div>
+                  <div style="display: inline-flex; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 4px; padding: 2px; gap: 3px;">
+                    <button type="button" id="btn-mode-subject-${shot.id || sIdx}" onclick="switchSingleShotMode('${shot.id || sIdx}', 'subject')" style="border: none; background: ${currentPromptFormat === 'subject' ? '#059669' : 'transparent'}; color: ${currentPromptFormat === 'subject' ? '#fff' : '#94a3b8'}; padding: 4px 10px; font-size: 10.5px; font-weight: 700; border-radius: 3px; cursor: pointer; transition: all 0.2s;">
+                      🎬 &lt;Subject1&gt; 影視標籤
+                    </button>
+                    <button type="button" id="btn-mode-atpic-${shot.id || sIdx}" onclick="switchSingleShotMode('${shot.id || sIdx}', 'at_picture')" style="border: none; background: ${currentPromptFormat === 'at_picture' ? '#0284c7' : 'transparent'}; color: ${currentPromptFormat === 'at_picture' ? '#fff' : '#94a3b8'}; padding: 4px 10px; font-size: 10.5px; font-weight: 700; border-radius: 3px; cursor: pointer; transition: all 0.2s;">
+                      🎨 @圖片1~@圖片5 原生格式
+                    </button>
+                    <button type="button" id="btn-mode-both-${shot.id || sIdx}" onclick="switchSingleShotMode('${shot.id || sIdx}', 'both')" style="border: none; background: transparent; color: #94a3b8; padding: 4px 10px; font-size: 10.5px; font-weight: 700; border-radius: 3px; cursor: pointer; transition: all 0.2s;">
+                      📑 雙規格並列展示
+                    </button>
+                  </div>
+                </div>
+
+                <!-- 模組 2-A: <Subject1> 影視級多主體影片提示詞 (含聲音/對白/幾何) -->
+                <div class="prompt-box prompt-box-subject" id="box-subject-${shot.id || sIdx}" style="margin-top: 6px; border-color: rgba(16, 185, 129, 0.35); display: ${currentPromptFormat === 'at_picture' ? 'none' : 'block'};">
+                  <div class="prompt-header" style="background: rgba(16, 185, 129, 0.12); display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                      <span style="color: #6ee7b7; font-size: 11px; font-weight: 700;">🎬 &lt;Subject1&gt; 影視級多主體影片 Prompt (含聲音/對白/幾何)</span>
+                      <span class="badge badge-emerald" style="font-size: 9.5px;">新影視標籤</span>
+                    </div>
+                    <button class="btn-copy" onclick="copyBoxPrompt(this)" style="font-size: 10.5px;">複製 &lt;Subject&gt; Prompt</button>
+                  </div>
+                  <div class="prompt-content" style="font-size: 11.5px; line-height: 1.5; color: #e2e8f0;">${escapeHtml(generateSingleShotSubjectPrompt(ch, ep, shot, sIdx))}</div>
+                </div>
+
+                <!-- 模組 2-B: MiniMax / Seedance 原生影片提示詞 (@圖片1~@圖片5 原生格式，完整保留絕不砍掉) -->
+                <div class="prompt-box prompt-box-atpic" id="box-atpic-${shot.id || sIdx}" style="margin-top: 6px; border-color: rgba(56, 189, 248, 0.35); display: ${currentPromptFormat === 'subject' ? 'none' : 'block'};">
+                  <div class="prompt-header" style="background: rgba(56, 189, 248, 0.1); display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                      <span style="color: #38bdf8; font-size: 11px; font-weight: 700;">🎨 MiniMax / Seedance 原生影片 Prompt (@圖片1~@圖片5 格式)</span>
+                      <span class="badge badge-primary" style="font-size: 9.5px;">ComfyUI 原生</span>
+                    </div>
+                    <button class="btn-copy" onclick="copyBoxPrompt(this)" style="font-size: 10.5px;">複製 @圖片 原生 Prompt</button>
+                  </div>
+                  <div class="prompt-content" style="font-size: 11.5px; line-height: 1.5; color: #e2e8f0;">${escapeHtml(singleMinimax)}</div>
                 </div>
               </div>
             `;
