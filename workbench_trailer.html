@@ -19,7 +19,8 @@
         <p class="page-subtitle" id="page-subtitle">75秒四幕式 · 12鏡頭 · 0對白 · CINEDANCE V4 導演級規格</p>
       </div>
       <div class="toolbar">
-        <button class="btn-primary" onclick="copyAllTrailerPrompts(this)">批次複製全部 12 鏡 PROMPT</button>
+        <button class="btn-primary" onclick="copyAllTrailerSubjectPrompts(this)" style="background: #059669; border-color: #10b981;">批次複製 12 鏡 &lt;Subject1&gt; 影視格式</button>
+        <button class="btn-secondary" onclick="copyAllTrailerPrompts(this)">批次複製 12 鏡 原生 PROMPT</button>
         <button class="btn-secondary" onclick="copyNegativePrompt(this)">複製全域消光防雜亂負向詞</button>
       </div>
     </div>
@@ -49,6 +50,14 @@
     });
 
     // 批次複製全部 Prompt
+    
+    // 批次複製全部 <Subject1> 影視規格 Prompt
+    function copyAllTrailerSubjectPrompts(btn) {
+      if (!trailerData || !trailerData.shots) return;
+      const allText = trailerData.shots.map(s => s.subjectPrompt || s.prompt).join("\n\n----------------------------------------\n\n");
+      copyToClipboard(allText, btn, "已一鍵複製全部 12 鏡 <Subject1> 影視格式 Prompt！");
+    }
+
     function copyAllTrailerPrompts(btn) {
       if (!trailerData || !trailerData.shots) return;
       const allText = trailerData.shots.map(s => `// [${s.id} - ${s.type} (${s.dur})] ${s.desc}\n${s.prompt}`).join("\n\n----------------------------------------\n\n");

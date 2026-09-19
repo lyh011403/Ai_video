@@ -12614,6 +12614,393 @@ Directional soft neutral studio lighting, authentic blood-stained coarse linen a
     ];
 
     // 前導概念片 12 鏡專屬影視級光學與微觀材質動態提示詞庫
+    
+    // =========================================================================
+    // 【全新多模態影視標籤規範】<Subject1> / <Picture 1> + 聲音規範 + 幾何軸線 + 逐鏡分鏡
+    // =========================================================================
+
+    let currentPromptFormat = 'subject'; // 預設使用新型 'subject' 格式，亦可切換回 'at_picture' (@圖片1 原生)
+
+    // 前導概念片 12 鏡專屬 <Subject1> 影視級多主體聲音對白與幾何標籤字典
+    const teaserSubjectScriptPrompts = {
+      "S01": `<Subject1>Lu Yuan是<Picture 1>畫面左側男性，保留參考圖中的極度蒼白面容、深陷青黑眼眶、黑色短碎髮、發舊深藍色物流防寒服、金屬自動鉛筆、黑皮筆記本、消瘦身材比例以及整體外貌。
+<Subject1>，S1 永遠是說話人。S1始終使用一種固定的聲音：26歲青年男性，低男中音，音色乾澀冷峻，語速平緩微沉，句尾利落下收；算力推演時冷靜克制，只在最後計算完成時氣息微沉；面對神明巨獸時呼吸壓抑屏息，無任何多餘情緒起伏。禁止播音腔、霸總氣泡音、熱血嘶吼腔和故作深沉。
+
+<Subject 3>是零下40℃黑雪籠罩下的永達物流調度大廳磨損金屬調度台。
+<Subject 4>是桌面平放的工程塑料計算機（按鍵長寬12mm，單一剛體外殼）。
+
+人物站位與空間幾何：
+相機以45度俯角正對調度台，工程塑料計算機平整貼死在磨損鋼製調度桌上。計算機下半部數字鍵盤正對相機，Lu Yuan修長手指垂直敲擊。
+
+[Shot 1]
+電影級微距特寫 (ECU)。相機極近距離聚焦於塑料計算機按鍵表面，背景光學虛化；Lu Yuan蒼白修長、凍結微霜的右手食指以每秒4次 (4Hz) 極高頻率連續敲擊工程塑料按鍵；按鍵受力回彈帶動表面懸浮灰塵與冰晶在暖黃鎢絲光錐中震顫：
+無人物對白，僅保留塑料計算機按鍵高頻清脆回彈脆響「嗒、嗒、嗒」與遠處發電機低沉底噪。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`,
+
+      "S02": `<Subject1>Lu Yuan是<Picture 1>畫面左側男性，保留參考圖中的極度蒼白面容、深陷青黑眼眶、黑色短碎髮、發舊深藍色物流防寒服、金屬自動鉛筆、黑皮筆記本、消瘦身材比例以及整體外貌。
+<Subject1>，S1 永遠是說話人。S1始終使用一種固定的聲音：26歲青年男性，低男中音，音色乾澀冷峻，語速平緩微沉，句尾利落下收。禁止播音腔、霸總氣泡音、熱血嘶吼腔和故作深沉。
+
+<Subject 3>是4Hz猩紅警報光割裂的永達物流調度大廳內部。
+<Subject 4>是0.5mm滾花金屬自動鉛筆與平鋪在鋼桌上的A5黑皮方格筆記本。
+
+人物站位與空間幾何：
+相機以35度側俯視角聚焦手部與紙面交會點。筆記本平鋪於桌面，Lu Yuan右手以標準60度繪圖角度緊握鉛筆，身體前傾。
+
+[Shot 2]
+中景 (MS)。沉穩緩慢前推鏡頭聚焦Lu Yuan。Lu Yuan右手緊握0.5mm滾花金屬自動鉛筆，在黑皮筆記本泛黃方格紙上飛速刻畫受力向量圖與拋物線；筆尖施力過猛刺破紙張纖維；長條日光燈電壓驟降電弧爆閃，整片空間驟然轉為4Hz血色緊急警報頻閃照明，如血刃割過蒼白病容：
+無人物對白，僅保留石墨筆尖劃破紙面刺耳沙沙聲與日光燈爆裂電弧音。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`,
+
+      "S03": `<Subject 3>是挑高8米、寬60米的永達物流轉運大廳與零下40℃狂暴黑雪末日荒原。
+<Subject 4>是結霜破裂的鋼架窗櫺與雪霧中旋轉的微弱黃色叉車警示燈。
+
+人物站位與空間幾何：
+相機沿水平視平線穿過破碎窗櫺向後拉升，大廳作為孤島置於中景核心，周遭被數公里黑雪荒原環繞。
+
+[Shot 3]
+極遠景 (ELS)。史詩大範圍慢速後拉。攝影機平穩穿過挑高8米調度大廳結霜破裂的窗櫺向後拉升，展現零下40℃漫天黑雪狂暴的末日荒原；寬達60米的永達物流轉運大廳如同一座鋼鐵孤島佇立在無邊風雪黑夜中，幾束微弱的黃色叉車警示燈在雪霧中穿透搖曳：
+無人物對白，僅保留極寒黑雪風暴呼嘯狂風與鋼架受凍呻吟。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`,
+
+      "S04": `<Subject1>Lu Yuan是<Picture 1>前景孤獨渺小的凡人剪影。
+<Subject 3>是漫天黑雪荒原上百米高拔地碎裂的太古青銅神門。
+<Subject 4>是向天空倒懸墜落的數十輛16米長重型卡車與扭曲鋼架。
+
+人物站位與空間幾何：
+前景為Lu Yuan剪影立於碎裂凍土；中景為受180度重力反轉升天的卡車群；遠景地平線上百米青銅巨門裂隙直通天穹。穿梭機採180度倒置滾轉穿插軌跡。
+
+[Shot 4]
+極遠景 (ELS)。穿梭機仰角滾轉穿插與180度重力倒懸。漫天黑雪荒原上百米高太古青銅巨門拔地碎裂，180度重力逆轉激發；穿梭機貼地掠過Lu Yuan身側，隨即滾轉180度倒置，高速穿梭於向天空垂直墜落的數十輛16米長重型卡車與崩裂鋼架縫隙之間，巨門裂隙噴薄出萬丈純白神聖體積光：
+無人物對白，僅保留大氣真空引力爆鳴與數十輛重卡倒懸騰空呼嘯。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`,
+
+      "S05": `<Subject 3>是黑雪呼嘯的萬載凍土裂谷與連鎖粉碎坍塌的冰川山脈。
+<Subject 4>是長達100米、高達60米的四足冰川巨獸【霜海行者】，周身覆蓋1.2米厚六角透光冰晶重甲，雙肩對稱聳立蜂窩中空角峰。
+
+人物站位與空間幾何：
+相機貼地極低仰角前推。柱狀巨足佔據畫面兩側垂直落點，角峰居於畫面上三分之一處，向外呈同心圓擴散可見震波。
+
+[Shot 5]
+全景 (WS)。地面極低角度緩慢前推。長達100米、高達60米的四足冰川巨獸【霜海行者】自暴風雪深處踏出萬噸巨步踩碎萬載凍土；全身覆蓋六角透光冰晶重甲，雙肩蜂窩中空角峰高頻震顫，向外擴散出一圈圈直徑達200米的可見白色16Hz次聲波衝擊環，遠方冰川山脈連鎖粉碎坍塌：
+無人物對白，僅保留泰坦巨足踏碎凍土的地震轟鳴與16Hz次聲波震顫。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`,
+
+      "S06": `<Subject 3>是重力徹底顛倒的倒懸大理石天刑殿。
+<Subject 4>是高12米的【執鉞刑殺·蓐收古尊】、20米機關長鉞與兩條30米黑金巨龍。
+
+人物站位與空間幾何：
+倒垂的王座居於畫面垂直頂端，相機以5度微弧軌道推進；蓐收古尊居中，兩條巨龍龍首左右探出對稱俯視鏡頭。
+
+[Shot 6]
+全景 (WS)。倒懸天刑殿王座5度微弧軌道推進。空間重力徹底顛倒，12米高【執鉞刑殺·蓐收古尊】端正屹立於倒垂的大理石王座，古典白玉面容眼窩亮起暗金微光，右手20米機關長鉞微沉激發內部齒輪自轉；身後兩條30米黑金巨龍向前探出猙獰龍首俯視鏡頭，龍鱗如金屬魚鰓開合收緊：
+無人物對白，僅保留雙龍金屬鱗片摩擦低吼與長鉞齒輪咬合沉悶重音。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`,
+
+      "S07": `<Subject 3>是千度高溫空洞、噴湧百米岩漿的地熱裂隙神殿。
+<Subject 4>是高8米、長14米覆蓋青銅饕餮神甲的太古神獸【燭荒古尊】與直徑2.2米的地熱黑鐵神球。
+
+人物站位與空間幾何：
+相機置於裂隙底部峭壁定點仰視。燭荒古尊佔據畫面中心高點，爪下黑鐵神球碎裂，岩漿火柱在背景兩側噴發形成火焰光幕。
+
+[Shot 7]
+全景 (WS)。地熱裂隙低角度定點仰視。低機位仰視地下熔爐峭壁，高8米、長14米的太古神獸【燭荒古尊】周身覆蓋青銅饕餮神甲；神獸暴怒右前爪踩碎直徑2.2米的地熱黑鐵神球，地底裂隙瞬間噴湧出數道高達100米的金色岩漿火柱，將千度空洞照耀如白晝：
+無人物對白，僅保留神獸地心咆哮與百米岩漿噴發烈焰烈火呼嘯。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`,
+
+      "S08": `<Subject2>Zhou Tie是<Picture 2>畫面中央防禦者，保留參考圖中的滿臉風霜胡茬、厚重橙灰反光防寒工裝、25mm生鐵螺栓護臂、魁梧體格。
+<Subject2>，S2 永遠是說話人。S2始終使用一種固定的聲音：45歲中年重工老工人，低沉沙啞重低音，胸腔共鳴強烈，發力抗傷時喉音爆發低沉悶哼。禁止奶油腔、播音腔、文弱腔。
+
+<Subject 4>是80cm鉻釩鋼重型管子扳手與黑紅太古神爪。
+
+人物站位與空間幾何：
+第一人稱機位直接鎖定在管子扳手前端鉗口；Zhou Tie雙臂生鐵護臂迎面向上交叉招架，神爪自畫面正上方砸落。
+
+[Shot 8]
+中景 (MS)。武器前端第一人稱機位鎖定。鏡頭直接固定在80cm鉻釩鋼重型管子扳手前端鉗口；Zhou Tie雙臂25mm厚重生鐵護臂狂暴迎面硬架，視野中黑紅太古神爪遮天蔽日砸下，「鐺——！」刺目金屬火星如熔岩暴雨般直接糊滿鏡頭，合金柄受力崩斷，鏡頭隨殘片劇烈翻滾：
+無人物對白，僅保留生鐵硬架金屬震顫巨響「鐺——！」與扳手合金柄崩斷脆響。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`,
+
+      "S09": `<Subject 3>是零下196℃急凍氣霧爆發的熔爐戰場前線。
+<Subject 4>是爆破專家徐昂剛毅側臉、30mm黃銅引信拉火環與高壓液氮急凍噴管。
+
+人物站位與空間幾何：
+大光圈中近景高速追焦側拍。徐昂居畫面左側三分之一處向右發力撕扯引信，神獸神甲居於右側景深邊緣。
+
+[Shot 9]
+中近景 (MCU)。工匠爆破高速追焦側拍。大光圈特寫爆破專家徐昂滿是煤灰與燙傷的剛毅側臉；他牙齒死死咬住30mm黃銅引信拉火環猛力一扯，零下196℃高壓液氮噴管零距離急凍神獸2000℃玄武岩神甲，白熾氣霧與馬氏體冷脆蛛網裂紋連鎖炸裂：
+無人物對白，僅保留黃銅引信咬合脆響、液氮高壓噴射尖鳴與神甲冷脆爆碎聲。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`,
+
+      "S10": `<Subject 3>是多維神域干涉交織的熔爐空間通道。
+<Subject 4>是林小滿鈦合金冰刀、宋嵐直徑50mm銀懷錶心靈偏折護盾、姜淮金色布林合約。
+
+人物站位與空間幾何：
+相機以流體運鏡穿梭三人戰線：左側冰刀滑移切角、中央銀懷錶偏折護盾展開、右側合約拍碎撕裂重力，三點構成引導線直指遠方神核。
+
+[Shot 10]
+中景 (MS)。三人戰術協同流體跟隨鏡頭。流暢運鏡動態貫通三人防線：左側林小滿鈦合金冰刀在結霜鋼架滑移切出折角火星；中景宋嵐手握直徑50mm銀懷錶展開六角幽藍心靈偏折護盾彈開精神衝擊；右側姜淮將金色布林合約拍碎撕裂神域重力，三維力學通路瞬間為Lu Yuan鎖定神核：
+無人物對白，僅保留冰刀切擦冰層尖嘯、懷錶護盾震盪嗡鳴與合約撕裂聲。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`,
+
+      "S11": `<Subject1>Lu Yuan是<Picture 1>自拋物線頂點躍出的弒神者，右臂紫金晶格完全蔓延爆發。
+<Subject 4>是40cm斷管子扳手合金柄與燭荒神尊胸膛開裂處暴露的直徑1米2500℃白熾神核。
+
+人物站位與空間幾何：
+相機採過肩俯衝視角緊隨Lu Yuan下壓軌跡，剛性垂直貫穿位於畫面底部的白熾神核，超新星衝擊環呈水平面擴散。
+
+[Shot 11]
+全景至特寫 (FS to CU)。過肩俯衝下壓追隨弧線。Lu Yuan右臂紫金晶格完全爆發蔓延，沿精算力學拋物線頂點踏空躍出；相機採過肩俯衝視角緊隨下衝，Lu Yuan雙手牢牢握死Zhou Tie折斷的40cm斷管子扳手，沿剛性垂直力線全力下壓，如鋼釘般直接貫穿燭荒神尊胸膛開裂處暴露的直徑1米2500℃白熾神核，刺目金芒與超新星金色光環席捲全場：
+無人物對白，僅保留斷鋼扳手貫穿神核金屬撕裂爆鳴與超新星衝擊波音爆。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`,
+
+      "S12": `<Subject1>Lu Yuan是<Picture 1>血痕斑斑倒映於筆身的蒼白面容。
+<Subject 4>是直立懸於方格筆記本公式上方的0.5mm滾花金屬自動鉛筆。
+
+人物站位與空間幾何：
+垂直正向極限微距安靜定格。鉛筆垂直立於筆記本中軸，按鈕正對相機，大拇指垂直按下，單滴血液垂直滴落。
+
+[Shot 12]
+電影級微距特寫 (ECU)。垂直正向極限微距安靜定格。狂暴風雪與爆炸金芒瞬間歸零，天地陷入絕對死寂；相機以垂直水平正向機位鎖定0.5mm滾花金屬自動鉛筆，鉛筆直立懸於方格筆記本公式上方，Lu Yuan血痕斑斑的蒼白臉龐倒映在筆身；右手大拇指沿鉛筆中軸剛性垂直按下頂部按鈕——「咔噠」；一滴深紅鮮血自筆尖垂直滴落在公式末端；畫面瞬間切入純黑，冷軋鋼金屬片名破冰定格：《門扉背後：凡人的弒神契約》：
+無人物對白，僅保留自動鉛筆「咔噠」機械脆響、單滴鮮血落紙微響與片名破冰巨響。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`
+    };
+
+    // 概念片整集完整多模態影視標籤文本
+    function buildTeaserSubjectPromptFull() {
+      const header = `<Subject1>Lu Yuan是<Picture 1>畫面左側男性，保留參考圖中的極度蒼白面容、深陷青黑眼眶、黑色短碎髮、發舊深藍色物流防寒服、金屬自動鉛筆、黑皮筆記本、消瘦身材比例以及整體外貌。
+<Subject1>，S1 永遠是說話人。S1始終使用一種固定的聲音：26歲青年男性，低男中音，音色乾澀冷峻，語速平緩微沉，句尾利落下收；算力推演時冷靜克制，只在最後計算完成時氣息微沉；面對神明巨獸時呼吸壓抑屏息，無任何多餘情緒起伏。禁止播音腔、霸總氣泡音、熱血嘶吼腔和故作深沉。
+
+<Subject2>Zhou Tie是<Picture 2>畫面右側男性，保留參考圖中的45歲中年男性面貌、滿臉風霜胡茬、厚重橙灰反光防寒工裝、25mm生鐵螺栓護臂、體格魁梧魁碩。
+<Subject2>，S2 永遠是說話人。S2始終使用一種固定的聲音：45歲中年重工老工人，低沉沙啞重低音，胸腔共鳴強烈，語速穩健有力，發力抗傷時喉音爆發低沉悶哼。禁止奶油腔、播音腔、文弱腔。
+
+<Subject 3>是太古青銅神門倒懸裂谷、零下40℃黑雪荒原與萬劫地熱熔爐神殿。
+
+<Subject 4>是0.5mm滾花金屬自動鉛筆、冷軋鋼黑皮筆記本與80cm重型鉻釩鋼管子扳手。
+
+人物站位與空間幾何：
+Lu Yuan身處畫面核心基準軸線，面對巨構神門與極寒風雪。在調度大廳內，Lu Yuan坐在金屬調度台前，身體微微前傾，左手按壓筆記本，右手握鉛筆；面對太古巨構與熔岩神殿時，保持左側凡人防線向右側神明巨獸對峙的水平視線軸線。環境中無背景音樂，僅保留極寒風雪呼嘯聲、重工業柴油發電機低頻震顫、金屬形變脆鳴與神明16Hz次聲波共振。`;
+
+      const shots = [
+        `[Shot 1]\n電影級微距特寫 (ECU)。相機極近距離聚焦於塑料計算機按鍵表面，背景光學虛化；Lu Yuan蒼白修長、凍結微霜的右手食指以每秒4次 (4Hz) 極高頻率連續敲擊工程塑料按鍵；按鍵受力回彈帶動表面懸浮灰塵與冰晶在暖黃鎢絲光錐中震顫：\n無人物對白，僅保留塑料計算機按鍵高頻清脆回彈脆響「嗒、嗒、嗒」與遠處發電機低沉底噪。`,
+        `[Shot 2]\n中景 (MS)。沉穩緩慢前推鏡頭聚焦Lu Yuan。Lu Yuan右手緊握0.5mm滾花金屬自動鉛筆，在黑皮筆記本泛黃方格紙上飛速刻畫受力向量圖與拋物線；筆尖施力過猛刺破紙張纖維；長條日光燈電壓驟降電弧爆閃，整片空間驟然轉為4Hz血色緊急警報頻閃照明，如血刃割過蒼白病容：\n無人物對白，僅保留石墨筆尖劃破紙面刺耳沙沙聲與日光燈爆裂電弧音。`,
+        `[Shot 3]\n極遠景 (ELS)。史詩大範圍慢速後拉。攝影機平穩穿過挑高8米調度大廳結霜破裂的窗櫺向後拉升，展現零下40℃漫天黑雪狂暴的末日荒原；寬達60米的永達物流轉運大廳如同一座鋼鐵孤島佇立在無邊風雪黑夜中，幾束微弱的黃色叉車警示燈在雪霧中穿透搖曳：\n無人物對白，僅保留極寒黑雪風暴呼嘯狂風與鋼架受凍呻吟。`,
+        `[Shot 4]\n極遠景 (ELS)。穿梭機仰角滾轉穿插與180度重力倒懸。漫天黑雪荒原上百米高太古青銅巨門拔地碎裂，180度重力逆轉激發；穿梭機貼地掠過Lu Yuan身側，隨即滾轉180度倒置，高速穿梭於向天空垂直墜落的數十輛16米長重型卡車與崩裂鋼架縫隙之間，巨門裂隙噴薄出萬丈純白神聖體積光：\n無人物對白，僅保留大氣真空引力爆鳴與數十輛重卡倒懸騰空呼嘯。`,
+        `[Shot 5]\n全景 (WS)。地面極低角度緩慢前推。長達100米、高達60米的四足冰川巨獸【霜海行者】自暴風雪深處踏出萬噸巨步踩碎萬載凍土；全身覆蓋六角透光冰晶重甲，雙肩蜂窩中空角峰高頻震顫，向外擴散出一圈圈直徑達200米的可見白色16Hz次聲波衝擊環，遠方冰川山脈連鎖粉碎坍塌：\n無人物對白，僅保留泰坦巨足踏碎凍土的地震轟鳴與16Hz次聲波震顫。`,
+        `[Shot 6]\n全景 (WS)。倒懸天刑殿王座5度微弧軌道推進。空間重力徹底顛倒，12米高【執鉞刑殺·蓐收古尊】端正屹立於倒垂的大理石王座，古典白玉面容眼窩亮起暗金微光，右手20米機關長鉞微沉激發內部齒輪自轉；身後兩條30米黑金巨龍向前探出猙獰龍首俯視鏡頭，龍鱗如金屬魚鰓開合收緊：\n無人物對白，僅保留雙龍金屬鱗片摩擦低吼與長鉞齒輪咬合沉悶重音。`,
+        `[Shot 7]\n全景 (WS)。地熱裂隙低角度定點仰視。低機位仰視地下熔爐峭壁，高8米、長14米的太古神獸【燭荒古尊】周身覆蓋青銅饕餮神甲；神獸暴怒右前爪踩碎直徑2.2米的地熱黑鐵神球，地底裂隙瞬間噴湧出數道高達100米的金色岩漿火柱，將千度空洞照耀如白晝：\n無人物對白，僅保留神獸地心咆哮與百米岩漿噴發烈焰烈火呼嘯。`,
+        `[Shot 8]\n中景 (MS)。武器前端第一人稱機位鎖定。鏡頭直接固定在80cm鉻釩鋼重型管子扳手前端鉗口；Zhou Tie雙臂25mm厚重生鐵護臂狂暴迎面硬架，視野中黑紅太古神爪遮天蔽日砸下，「鐺——！」刺目金屬火星如熔岩暴雨般直接糊滿鏡頭，合金柄受力崩斷，鏡頭隨殘片劇烈翻滾：\n無人物對白，僅保留生鐵硬架金屬震顫巨響「鐺——！」與扳手合金柄崩斷脆響。`,
+        `[Shot 9]\n中近景 (MCU)。工匠爆破高速追焦側拍。大光圈特寫爆破專家徐昂滿是煤灰與燙傷的剛毅側臉；他牙齒死死咬住30mm黃銅引信拉火環猛力一扯，零下196℃高壓液氮噴管零距離急凍神獸2000℃玄武岩神甲，白熾氣霧與馬氏體冷脆蛛網裂紋連鎖炸裂：\n無人物對白，僅保留黃銅引信咬合脆響、液氮高壓噴射尖鳴與神甲冷脆爆碎聲。`,
+        `[Shot 10]\n中景 (MS)。三人戰術協同流體跟隨鏡頭。流暢運鏡動態貫通三人防線：左側林小滿鈦合金冰刀在結霜鋼架滑移切出折角火星；中景宋嵐手握直徑50mm銀懷錶展開六角幽藍心靈偏折護盾彈開精神衝擊；右側姜淮將金色布林合約拍碎撕裂神域重力，三維力學通路瞬間為Lu Yuan鎖定神核：\n無人物對白，僅保留冰刀切擦冰層尖嘯、懷錶護盾震盪嗡鳴與合約撕裂聲。`,
+        `[Shot 11]\n全景至特寫 (FS to CU)。過肩俯衝下壓追隨弧線。Lu Yuan右臂紫金晶格完全爆發蔓延，沿精算力學拋物線頂點踏空躍出；相機採過肩俯衝視角緊隨下衝，Lu Yuan雙手牢牢握死Zhou Tie折斷的40cm斷管子扳手，沿剛性垂直力線全力下壓，如鋼釘般直接貫穿燭荒神尊胸膛開裂處暴露的直徑1米2500℃白熾神核，刺目金芒與超新星金色光環席捲全場：\n無人物對白，僅保留斷鋼扳手貫穿神核金屬撕裂爆鳴與超新星衝擊波音爆。`,
+        `[Shot 12]\n電影級微距特寫 (ECU)。垂直正向極限微距安靜定格。狂暴風雪與爆炸金芒瞬間歸零，天地陷入絕對死寂；相機以垂直水平正向機位鎖定0.5mm滾花金屬自動鉛筆，鉛筆直立懸於方格筆記本公式上方，Lu Yuan血痕斑斑的蒼白臉龐倒映在筆身；右手大拇指沿鉛筆中軸剛性垂直按下頂部按鈕——「咔噠」；一滴深紅鮮血自筆尖垂直滴落在公式末端；畫面瞬間切入純黑，冷軋鋼金屬片名破冰定格：《門扉背後：凡人的弒神契約》：\n無人物對白，僅保留自動鉛筆「咔噠」機械脆響、單滴鮮血落紙微響與片名破冰巨響。`
+      ];
+
+      const footer = `【禁止項】\n\n文字/UI/水印/Logo/角標/可讀文字/真實UI\n\n【強制聲明】\n\n無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`;
+
+      return `${header}\n\n${shots.join('\n\n')}\n\n${footer}`;
+    }
+
+    // 生成單鏡 <Subject1> 影視級多主體提示詞
+    function generateSingleShotSubjectPrompt(ch, ep, shot, sIdx) {
+      if (!ep || !shot) return '';
+      const sNum = sIdx + 1;
+      const shotId = shot.id || `S${String(sNum).padStart(2, '0')}`;
+      const isTeaser = (ch && ch.id === 'ch_teaser') || (ep && ep.tag && ep.tag.includes('純視覺'));
+
+      if (isTeaser && typeof teaserSubjectScriptPrompts !== 'undefined' && teaserSubjectScriptPrompts[shotId]) {
+        return teaserSubjectScriptPrompts[shotId];
+      }
+
+      const manifest = extractEpisodeAssetManifest(ch, ep);
+      const char1 = manifest.characters[0] || { name: "陸遠 (Lu Yuan)", tag: "@char_luyuan" };
+      const char2 = (manifest.characters.length > 1) ? manifest.characters[1] : { name: "現場守衛", tag: "@char_guard" };
+      const env = manifest.environments[0] || { name: "廢墟空間", num: "ENV-01" };
+      const prop = manifest.props[0] || { name: "防身重型扳手" };
+
+      const char1NameEn = (char1.name.includes('陸遠') || char1.name.includes('Lu Yuan')) ? 'Lu Yuan' : char1.name.split(' ')[0];
+      const char2NameEn = char2.name.split(' ')[0];
+
+      return `<Subject1>${char1NameEn}是<Picture 1>畫面主角，保留參考圖中的面貌特徵、服飾與身材比例。
+<Subject1>，S1 永遠是說話人。S1始終使用固定聲音：26歲青年男性，低男中音，音色乾澀冷峻，語速平緩微沉，句尾利落下收。禁止播音腔、霸總氣泡音、熱血嘶吼腔和故作深沉。
+
+<Subject2>${char2NameEn}是<Picture 2>配角對象，保留參考圖中的外觀特徵。
+<Subject2>，S2 永遠是說話人。S2始終使用固定聲音：聲音沉穩，胸腔共鳴，語速適中。
+
+<Subject 3>是${env.num || 'ENV'} ${env.name}。
+<Subject 4>是${prop.name}。
+
+人物站位與空間幾何：
+${char1NameEn}身處基準軸線，面對環境展開行動，相機採${shot.cam || '標準機位'}。${shot.fov || ''}
+
+[Shot ${sNum}]
+${shot.type || 'MS'}。${shot.cam || ''}。${shot.desc || ''}：
+無人物對白，僅保留環境音效：${shot.sfx || '工業金屬機械音與風雪呼嘯'}。
+
+【禁止項】
+文字/UI/水印/Logo/角標/可讀文字/真實UI
+
+【強制聲明】
+無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`;
+    }
+
+    // 生成整集 <Subject1> 影視級多模態提示詞
+    function generateSubjectScriptPrompt(ch, ep, partIndex) {
+      if (!ep || !ep.shots) return '';
+      const isTeaser = (ch && ch.id === 'ch_teaser') || (ep && ep.tag && ep.tag.includes('純視覺'));
+      if (isTeaser) {
+        return buildTeaserSubjectPromptFull();
+      }
+
+      const manifest = extractEpisodeAssetManifest(ch, ep);
+      const char1 = manifest.characters[0] || { name: "陸遠 (Lu Yuan)", tag: "@char_luyuan" };
+      const char2 = (manifest.characters.length > 1) ? manifest.characters[1] : { name: "配角", tag: "@char_guard" };
+      const env = manifest.environments[0] || { name: "場景空間", num: "ENV-01" };
+      const prop = manifest.props[0] || { name: "核心裝備" };
+
+      const char1NameEn = (char1.name.includes('陸遠') || char1.name.includes('Lu Yuan')) ? 'Lu Yuan' : char1.name.split(' ')[0];
+      const char2NameEn = char2.name.split(' ')[0];
+
+      const header = `<Subject1>${char1NameEn}是<Picture 1>畫面核心角色，保留參考圖中的面部特徵、服裝材質、身材比例以及整體外貌。
+<Subject1>，S1 永遠是說話人。S1始終使用固定聲音：26歲青年男性，低男中音，音色乾澀冷峻，語速平緩微沉，句尾利落下收；算力推演時冷靜克制，面對危局時呼吸壓抑屏息。禁止播音腔、霸總氣泡音、熱血嘶吼腔和故作深沉。
+
+<Subject2>${char2NameEn}是<Picture 2>對象角色，保留參考圖中的外貌與裝備特徵。
+<Subject2>，S2 永遠是說話人。S2始終使用固定聲音：聲音沉穩有胸腔共鳴，語速適中。
+
+<Subject 3>是${env.num || 'ENV'} ${env.name}與周遭環境空間。
+
+<Subject 4>是${prop.name}與場景關鍵道具。
+
+人物站位與空間幾何：
+${char1NameEn}身處畫面視覺軸線，保持嚴謹的透視關係與光學約束。環境中無背景音樂，僅保留場景自然音、工業機械運作聲與物理碰撞音效。`;
+
+      const shotsSnippet = ep.shots.map((shot, sIdx) => {
+        return `[Shot ${sIdx + 1}]\n${shot.type || 'MS'}。${shot.cam || '標準機位'}。${shot.desc || ''} (時長: ${shot.dur || '4s'})：\n無人物對白，僅保留環境音效：${shot.sfx || '金屬與環境物理音效'}。`;
+      }).join('\n\n');
+
+      const footer = `【禁止項】\n\n文字/UI/水印/Logo/角標/可讀文字/真實UI\n\n【強制聲明】\n\n無背景音樂,僅保留環境音與人聲和音效;畫面禁字幕/文字/水印/Logo;禁止可讀文字(指畫面字幕文字,不含人聲台詞)`;
+
+      return `${header}\n\n${shotsSnippet}\n\n${footer}`;
+    }
+
+    // 切換提示詞格式 ('subject' 或 'at_picture')
+    function switchPromptFormat(fmt) {
+      currentPromptFormat = fmt;
+      
+      // 更新按鈕樣式
+      const btnSubject = document.getElementById('fmt-btn-subject');
+      const btnAtPic = document.getElementById('fmt-btn-atpic');
+      if (btnSubject && btnAtPic) {
+        if (fmt === 'subject') {
+          btnSubject.style.background = '#059669';
+          btnSubject.style.color = '#fff';
+          btnAtPic.style.background = 'transparent';
+          btnAtPic.style.color = '#94a3b8';
+        } else {
+          btnAtPic.style.background = '#059669';
+          btnAtPic.style.color = '#fff';
+          btnSubject.style.background = 'transparent';
+          btnSubject.style.color = '#94a3b8';
+        }
+      }
+
+      // 重新計算當前集數提示詞並更新預覽框
+      if (chapterData && chapterData[currentChapterKey]) {
+        const ch = chapterData[currentChapterKey];
+        const ep = (ch.episodes && ch.episodes[currentPartIndex]) ? ch.episodes[currentPartIndex] : ch.episodes[0];
+        const textEl = document.getElementById('minimax-prompt-text');
+        if (textEl && ep) {
+          const newPrompt = (fmt === 'subject') 
+            ? generateSubjectScriptPrompt(ch, ep, currentPartIndex)
+            : generateMinimaxPrompt(ch, ep, currentPartIndex);
+          textEl.textContent = newPrompt;
+        }
+
+        // 更新單鏡卡片內部的提示詞顯示
+        if (ep && ep.shots) {
+          ep.shots.forEach((shot, sIdx) => {
+            const shotBox = document.getElementById('single-video-prompt-' + (shot.id || sIdx));
+            if (shotBox) {
+              const singlePrompt = (fmt === 'subject')
+                ? generateSingleShotSubjectPrompt(ch, ep, shot, sIdx)
+                : generateSingleShotMinimaxPrompt(ch, ep, shot, sIdx);
+              shotBox.textContent = singlePrompt;
+            }
+          });
+        }
+      }
+
+      showToast(`✓ 已切換為【${fmt === 'subject' ? '<Subject1> 影視標籤 (含聲音/對白/幾何)' : '@圖片1~@圖片5 原生格式 (ComfyUI)'}】`);
+    }
+
+    // 複製當前選定格式之完整集數提示詞
+    function copyCurrentFormatEpisodePrompt(btn) {
+      const textEl = document.getElementById('minimax-prompt-text');
+      if (!textEl) return;
+      const text = textEl.innerText || textEl.textContent || '';
+      const label = (currentPromptFormat === 'subject') ? '<Subject1> 影視標籤' : '@圖片1~@圖片5 原生';
+      copyToClipboard(text, btn, `✓ 已複製 ${label} 完整提示詞 (可直接貼入影片生成模型)！`);
+    }
+
     const teaserCinematicPrompts = {
       "S01": `@圖片1：登場角色陸遠（26歲青年男性，保留參考圖中的極度蒼白面容、深陷青黑眼眶、黑色短碎髮、發舊深藍色物流防寒服、金屬自動鉛筆、黑皮筆記本與修長身形）。
 
@@ -14497,7 +14884,7 @@ function createAssetCard(item) {
       // 2. MiniMax / Seedance 多模態端到端提示詞專區
       try {
         if (minimaxCont) {
-          const minimaxFullPrompt = generateMinimaxPrompt(ch, ep, currentPartIndex);
+          const minimaxFullPrompt = (currentPromptFormat === 'subject') ? generateSubjectScriptPrompt(ch, ep, currentPartIndex) : generateMinimaxPrompt(ch, ep, currentPartIndex);
           const manifestHtml = generate4AssetManifestHtml(ch, ep, manifest);
           
           minimaxCont.innerHTML = `
@@ -14660,11 +15047,16 @@ function createAssetCard(item) {
 
                 <!-- 模組 2: MiniMax / Seedance 影片提示詞 (Video 專用) -->
                 <div class="prompt-box" style="margin-top: 8px; border-color: rgba(16, 185, 129, 0.3);">
-                  <div class="prompt-header" style="background: rgba(16, 185, 129, 0.1);">
-                    <span style="color: #6ee7b7; font-size: 11px;">🎬 MiniMax / Seedance 本鏡影片動態 Prompt</span>
-                    <button class="btn-copy" onclick="copyBoxPrompt(this)">複製影片 Prompt</button>
+                  <div class="prompt-header" style="background: rgba(16, 185, 129, 0.1); display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                      <span style="color: #6ee7b7; font-size: 11px; font-weight: 700;">🎬 本鏡多模態影片動態 Prompt</span>
+                      <span class="badge badge-emerald" style="font-size: 9px;">${currentPromptFormat === 'subject' ? '<Subject1> 影視格式' : '@圖片1 原生格式'}</span>
+                    </div>
+                    <div style="display: flex; gap: 6px;">
+                      <button class="btn-copy" onclick="copyBoxPrompt(this)" style="font-size: 10.5px;">複製本鏡 Prompt</button>
+                    </div>
                   </div>
-                  <div class="prompt-content" style="font-size: 11.5px; line-height: 1.5; color: #e2e8f0;">${escapeHtml(singleMinimax)}</div>
+                  <div class="prompt-content" id="single-video-prompt-${shot.id || sIdx}" style="font-size: 11.5px; line-height: 1.5; color: #e2e8f0;">${escapeHtml((currentPromptFormat === 'subject') ? generateSingleShotSubjectPrompt(ch, ep, shot, sIdx) : singleMinimax)}</div>
                 </div>
               </div>
             `;
