@@ -13007,8 +13007,19 @@ function createAssetCard(item) {
             const singleMinimax = generateSingleShotMinimaxPrompt(ch, ep, shot, sIdx);
             const shotChar = manifest.characters.find(c => c.kw.some(k => (shot.desc || '').includes(k) || (shot.body || '').includes(k))) || manifest.characters[0];
             const shotProp = manifest.props.find(p => p.kw.some(k => (shot.desc || '').includes(k) || (shot.body || '').includes(k)));
-
-            return `
+            
+            // 安全獲取前導片導演線框圖與空間調度規格 (高容錯防禦)
+            const isTeaser = (ch && (ch.id === 'ch_teaser' || (ch.num && ch.num.includes('旗艦特企')))) || (ep && ep.tag && ep.tag.includes('純視覺')) || (currentChapterKey === 'ch_teaser');
+            let wireframeSvg = shot.svg || '';
+            let staging = shot.staging || null;
+            if (isTeaser && typeof trailerData !== 'undefined' && trailerData.shots) {
+              const matchedTrailerShot = trailerData.shots.find(s => s.id === shot.id);
+              if (matchedTrailerShot) {
+                if (!wireframeSvg && matchedTrailerShot.svg) wireframeSvg = matchedTrailerShot.svg;
+                if (!staging && matchedTrailerShot.staging) staging = matchedTrailerShot.staging;
+              }
+            }
+return `
               <div class="shot-card">
                 <div class="shot-header">
                   <div style="display: flex; align-items: center; gap: 6px;">
