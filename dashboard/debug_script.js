@@ -13049,6 +13049,19 @@ function createAssetCard(item) {
                   }
                 })()}
 
+                ${wireframeSvg ? `
+                  <div style="margin: 8px 0; border-radius: 6px; overflow: hidden; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+                    ${wireframeSvg}
+                  </div>
+                ` : ''}
+                ${staging ? `
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 6px; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 6px 10px; font-size: 10.5px; margin-bottom: 8px;">
+                    <div><span style="color:#64748b; font-weight:700;">朝向：</span><span style="color:#cbd5e1;">${escapeHtml(staging.orientation)}</span></div>
+                    <div><span style="color:#64748b; font-weight:700;">位差：</span><span style="color:#cbd5e1;">${escapeHtml(staging.elevation)}</span></div>
+                    <div><span style="color:#64748b; font-weight:700;">景深：</span><span style="color:#cbd5e1;">${escapeHtml(staging.deepFocus)}</span></div>
+                    <div><span style="color:#64748b; font-weight:700;">軌跡：</span><span style="color:#cbd5e1;">${escapeHtml(staging.trajectory)}</span></div>
+                  </div>
+                ` : ''}
                 <div class="shot-desc">${shot.desc}</div>
                 ${shot.sfx ? `<div class="shot-sfx">🔊 ${shot.sfx}</div>` : ''}
 

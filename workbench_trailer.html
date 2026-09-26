@@ -3,8 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>官方概念前導片 (Concept Teaser) 導演工作台 · 門扉背後：凡人的弒神契約</title>
+  <title>官方概念前導片 (Concept Teaser · Director's Cut) 導演工作台 · 門扉背後：凡人的弒神契約</title>
   <link rel="stylesheet" href="css/workbench.css">
+  <style>
+    /* 微型膠囊捲軸規範 */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.4); }
+    * { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.2) transparent; }
+
+    .director-card {
+      background: #090e17;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 18px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .director-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-2px);
+    }
+    .director-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding-bottom: 10px;
+    }
+    .wireframe-container {
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 11px;
+    }
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .spec-label {
+      color: #64748b;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .spec-value {
+      color: #cbd5e1;
+      font-family: var(--font-mono, monospace);
+    }
+    .shot-desc-text {
+      font-size: 12.5px;
+      color: #e2e8f0;
+      line-height: 1.6;
+      background: rgba(0,0,0,0.25);
+      border-left: 3px solid #38bdf8;
+      padding: 8px 12px;
+      border-radius: 0 4px 4px 0;
+    }
+    .prompt-box {
+      background: #050811;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .prompt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.03);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .prompt-content {
+      padding: 10px 12px;
+      font-family: var(--font-mono, monospace);
+      font-size: 11px;
+      line-height: 1.6;
+      color: #94a3b8;
+      white-space: pre-wrap;
+      max-height: 140px;
+      overflow-y: auto;
+    }
+    .btn-copy {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      padding: 3px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 10.5px;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .btn-copy:hover {
+      background: #38bdf8;
+      color: #000;
+    }
+  </style>
 </head>
 <body>
 
@@ -12,30 +127,43 @@
   <header id="global-header"></header>
 
   <!-- 主內容容器 -->
-  <main class="main-container">
-    <div class="page-header">
+  <main class="main-container" style="max-width: 1600px; margin: 0 auto; padding: 20px;">
+    <div class="page-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 18px;">
       <div>
-        <h1 class="page-title" id="page-title">概念前導片 (Official Concept Teaser)</h1>
-        <p class="page-subtitle" id="page-subtitle">75秒四幕式 · 12鏡頭 · 0對白 · CINEDANCE V4 導演級規格</p>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <h1 class="page-title" id="page-title" style="font-size: 22px; font-weight: 800; color: #fff; margin: 0;">官方概念前導片 (Concept Teaser · Director's Cut)</h1>
+          <span style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #34d399; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">導演視覺線框分鏡版</span>
+        </div>
+        <p class="page-subtitle" id="page-subtitle" style="font-size: 12.5px; color: #94a3b8; margin-top: 6px;">
+          75秒四幕式 · 12鏡頭 · 向量SVG空間線框圖 · 空間動線幾何 · <Subject1> 影視級多主體雙軌格式
+        </p>
       </div>
-      <div class="toolbar">
-        <button class="btn-primary" onclick="copyAllTrailerSubjectPrompts(this)" style="background: #059669; border-color: #10b981;">批次複製 12 鏡 &lt;Subject1&gt; 影視格式</button>
-        <button class="btn-secondary" onclick="copyAllTrailerPrompts(this)">批次複製 12 鏡 原生 PROMPT</button>
-        <button class="btn-secondary" onclick="copyNegativePrompt(this)">複製全域消光防雜亂負向詞</button>
+      <div class="toolbar" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button class="btn-primary" onclick="copyAllTrailerSubjectPrompts(this)" style="background: #059669; border-color: #10b981; font-weight: 700; padding: 8px 16px; border-radius: 6px; cursor: pointer; color: #fff;">
+          批次複製 12 鏡 &lt;Subject1&gt; 影視格式
+        </button>
+        <button class="btn-secondary" onclick="copyAllTrailerPrompts(this)" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8; font-weight: 700; padding: 8px 16px; border-radius: 6px; cursor: pointer;">
+          批次複製 12 鏡 原生 PROMPT
+        </button>
+        <button class="btn-secondary" onclick="copyNegativePrompt(this)" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); color: #cbd5e1; padding: 8px 14px; border-radius: 6px; cursor: pointer;">
+          複製消光防雜亂負向詞
+        </button>
       </div>
     </div>
 
-    <!-- 鏡頭卡片清單 -->
-    <div class="shots-grid" id="shots-container">
+    <!-- 鏡頭卡片清單 (網格佈局) -->
+    <div class="shots-grid" id="shots-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(460px, 1fr)); gap: 20px;">
       <!-- 由 JS 動態注入 -->
     </div>
   </main>
 
-  <!-- 引入解耦腳本 -->
+  <!-- 引入解耦腳本與資料庫 -->
   <script src="js/viewer_engine.js"></script>
   <script src="data/trailer_data.js"></script>
 
   <script>
+    let currentGlobalMode = 'subject'; // 全域切換預設值
+
     document.addEventListener("DOMContentLoaded", () => {
       // 1. 渲染頂部導航
       renderGlobalHeader('trailer');
@@ -43,14 +171,166 @@
       // 2. 渲染鏡頭清單
       const container = document.getElementById("shots-container");
       if (typeof trailerData !== 'undefined' && trailerData.shots) {
-        container.innerHTML = trailerData.shots.map((shot, idx) => renderShotCard(shot, idx)).join("");
+        container.innerHTML = trailerData.shots.map((shot, idx) => renderDirectorCard(shot, idx)).join("");
       } else {
         container.innerHTML = "<div style='color: #ef4444; padding: 20px;'>前導片數據載入異常，請檢查 data/trailer_data.js</div>";
       }
     });
 
-    // 批次複製全部 Prompt
-    
+    // 渲染單張導演級分鏡卡片
+    function renderDirectorCard(shot, idx) {
+      const shotId = shot.id || ("S" + String(idx + 1).padStart(2, '0'));
+      const staging = shot.staging || {};
+      const svgCode = shot.svg || "";
+      const dynamicKeyVisual = shot.keyVisualPrompt || shot.prompt || "";
+      const subjectPrompt = shot.subjectPrompt || "";
+      const nativePrompt = shot.nativePrompt || shot.prompt || "";
+
+      return `
+        <div class="director-card" id="director-shot-${shotId}">
+          <!-- 頂部 Meta 標籤列 -->
+          <div class="director-header">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="background: #0284c7; color: #fff; font-weight: 800; font-family: monospace; font-size: 11px; padding: 2px 8px; border-radius: 4px;">${shotId}</span>
+              <span style="color: #cbd5e1; font-weight: 700; font-size: 12px;">${shot.type}</span>
+              <span style="color: #64748b; font-family: monospace; font-size: 11px;">(${shot.dur || '4s'})</span>
+            </div>
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <span style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); color: #fbbf24; padding: 2px 6px; border-radius: 4px; font-size: 10px;">${shot.lens || '35mm'}</span>
+              <span style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; padding: 2px 6px; border-radius: 4px; font-size: 10px;">${shot.cam ? shot.cam.split(' ')[0] : '標準機位'}</span>
+            </div>
+          </div>
+
+          <!-- 第一層：導演視覺線框分鏡圖 (SVG Wireframe) -->
+          <div class="wireframe-container">
+            ${svgCode}
+          </div>
+
+          <!-- 第二層：空間調度與視聽美學規格晶片列 -->
+          <div class="specs-grid">
+            <div class="spec-item">
+              <span class="spec-label">身體朝向 (Orientation)</span>
+              <span class="spec-value">${staging.orientation || '正面'}</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">空間高低差 (Elevation)</span>
+              <span class="spec-value">${staging.elevation || '視平線'}</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">前後景深 (Deep Focus)</span>
+              <span class="spec-value">${staging.deepFocus || '全景深'}</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">運動軌跡 (Trajectory)</span>
+              <span class="spec-value">${staging.trajectory || '定點'}</span>
+            </div>
+          </div>
+
+          <!-- 第三層：畫面構圖與動作描述 -->
+          <div class="shot-desc-text">
+            ${shot.desc}
+          </div>
+          ${shot.audio ? `
+            <div style="font-size: 11px; color: #93c5fd; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); padding: 6px 10px; border-radius: 4px;">
+              🔊 <strong>Foley &amp; 聲學：</strong>${shot.audio}
+            </div>
+          ` : ''}
+
+          <!-- 第四層：模組 1 - 首幀生圖 Prompt (Picture 1) -->
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <span style="color: #cbd5e1;">🖼️ 首幀生圖 Prompt (Picture 1 · Key Visual)</span>
+              <button class="btn-copy" onclick="copyBoxPrompt(this)">複製生圖 Prompt</button>
+            </div>
+            <div class="prompt-content">${escapeHtml(dynamicKeyVisual)}</div>
+          </div>
+
+          <!-- 第五層：【紅框新增區塊】影片提示詞規格切換列 -->
+          <div class="shot-format-switch-bar" style="margin-top: 4px; display: flex; justify-content: space-between; align-items: center; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 6px; padding: 6px 10px; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: #94a3b8; font-weight: 700;">
+              <span>⚡ 影片動態 Prompt 規格切換：</span>
+            </div>
+            <div style="display: inline-flex; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 4px; padding: 2px; gap: 3px;">
+              <button type="button" id="btn-mode-subject-${shotId}" onclick="switchSingleShotMode('${shotId}', 'subject')" style="border: none; background: #059669; color: #fff; padding: 4px 10px; font-size: 10.5px; font-weight: 700; border-radius: 3px; cursor: pointer; transition: all 0.2s;">
+                🎬 &lt;Subject1&gt; 影視標籤
+              </button>
+              <button type="button" id="btn-mode-atpic-${shotId}" onclick="switchSingleShotMode('${shotId}', 'at_picture')" style="border: none; background: transparent; color: #94a3b8; padding: 4px 10px; font-size: 10.5px; font-weight: 700; border-radius: 3px; cursor: pointer; transition: all 0.2s;">
+                🎨 @圖片1~@圖片5 原生格式
+              </button>
+              <button type="button" id="btn-mode-both-${shotId}" onclick="switchSingleShotMode('${shotId}', 'both')" style="border: none; background: transparent; color: #94a3b8; padding: 4px 10px; font-size: 10.5px; font-weight: 700; border-radius: 3px; cursor: pointer; transition: all 0.2s;">
+                📑 雙規格並列展示
+              </button>
+            </div>
+          </div>
+
+          <!-- 第六層：模組 2-A <Subject1> 影視級多主體影片提示詞 -->
+          <div class="prompt-box" id="box-subject-${shotId}" style="border-color: rgba(16, 185, 129, 0.35); display: block;">
+            <div class="prompt-header" style="background: rgba(16, 185, 129, 0.12);">
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: #6ee7b7;">🎬 &lt;Subject1&gt; 影視級多主體影片 Prompt (含聲音/對白/幾何)</span>
+                <span style="background: #059669; color: #fff; padding: 1px 6px; border-radius: 3px; font-size: 9px;">新影視標籤</span>
+              </div>
+              <button class="btn-copy" onclick="copyBoxPrompt(this)">複製 &lt;Subject&gt; Prompt</button>
+            </div>
+            <div class="prompt-content" style="color: #e2e8f0;">${escapeHtml(subjectPrompt)}</div>
+          </div>
+
+          <!-- 第七層：模組 2-B @圖片1~@圖片5 原生影片提示詞 (完整保留) -->
+          <div class="prompt-box" id="box-atpic-${shotId}" style="border-color: rgba(56, 189, 248, 0.35); display: none;">
+            <div class="prompt-header" style="background: rgba(56, 189, 248, 0.1);">
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: #38bdf8;">🎨 MiniMax / Seedance 原生影片 Prompt (@圖片1~@圖片5 格式)</span>
+                <span style="background: #0284c7; color: #fff; padding: 1px 6px; border-radius: 3px; font-size: 9px;">ComfyUI 原生</span>
+              </div>
+              <button class="btn-copy" onclick="copyBoxPrompt(this)">複製 @圖片 原生 Prompt</button>
+            </div>
+            <div class="prompt-content" style="color: #cbd5e1;">${escapeHtml(nativePrompt)}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // 單鏡卡片模式切換函式
+    function switchSingleShotMode(shotId, mode) {
+      const boxSubject = document.getElementById('box-subject-' + shotId);
+      const boxAtpic = document.getElementById('box-atpic-' + shotId);
+      const btnSubject = document.getElementById('btn-mode-subject-' + shotId);
+      const btnAtpic = document.getElementById('btn-mode-atpic-' + shotId);
+      const btnBoth = document.getElementById('btn-mode-both-' + shotId);
+
+      if (!boxSubject || !boxAtpic) return;
+
+      if (mode === 'subject') {
+        boxSubject.style.display = 'block';
+        boxAtpic.style.display = 'none';
+        if (btnSubject) { btnSubject.style.background = '#059669'; btnSubject.style.color = '#fff'; }
+        if (btnAtpic) { btnAtpic.style.background = 'transparent'; btnAtpic.style.color = '#94a3b8'; }
+        if (btnBoth) { btnBoth.style.background = 'transparent'; btnBoth.style.color = '#94a3b8'; }
+      } else if (mode === 'at_picture') {
+        boxSubject.style.display = 'none';
+        boxAtpic.style.display = 'block';
+        if (btnAtpic) { btnAtpic.style.background = '#0284c7'; btnAtpic.style.color = '#fff'; }
+        if (btnSubject) { btnSubject.style.background = 'transparent'; btnSubject.style.color = '#94a3b8'; }
+        if (btnBoth) { btnBoth.style.background = 'transparent'; btnBoth.style.color = '#94a3b8'; }
+      } else if (mode === 'both') {
+        boxSubject.style.display = 'block';
+        boxAtpic.style.display = 'block';
+        if (btnBoth) { btnBoth.style.background = '#7c3aed'; btnBoth.style.color = '#fff'; }
+        if (btnSubject) { btnSubject.style.background = 'transparent'; btnSubject.style.color = '#94a3b8'; }
+        if (btnAtpic) { btnAtpic.style.background = 'transparent'; btnAtpic.style.color = '#94a3b8'; }
+      }
+    }
+
+    // 複製 Prompt 輔助函式
+    function copyBoxPrompt(btn) {
+      const box = btn.closest('.prompt-box');
+      if (!box) return;
+      const content = box.querySelector('.prompt-content');
+      if (content) {
+        copyToClipboard(content.innerText || content.textContent || '', btn, '已複製 Prompt！');
+      }
+    }
+
     // 批次複製全部 <Subject1> 影視規格 Prompt
     function copyAllTrailerSubjectPrompts(btn) {
       if (!trailerData || !trailerData.shots) return;
@@ -58,16 +338,28 @@
       copyToClipboard(allText, btn, "已一鍵複製全部 12 鏡 <Subject1> 影視格式 Prompt！");
     }
 
+    // 批次複製全部原生 Prompt
     function copyAllTrailerPrompts(btn) {
       if (!trailerData || !trailerData.shots) return;
-      const allText = trailerData.shots.map(s => `// [${s.id} - ${s.type} (${s.dur})] ${s.desc}\n${s.prompt}`).join("\n\n----------------------------------------\n\n");
-      copyToClipboard(allText, btn, "已一鍵複製全部 12 鏡前導片 Prompt！");
+      const allText = trailerData.shots.map(s => `// [${s.id} - ${s.type} (${s.dur})] ${s.desc}\n${s.nativePrompt || s.prompt}`).join("\n\n----------------------------------------\n\n");
+      copyToClipboard(allText, btn, "已一鍵複製全部 12 鏡前導片 原生 Prompt！");
     }
 
     // 複製全域負向詞
     function copyNegativePrompt(btn) {
       const neg = "Negative prompt (for SD / Flux / Midjourney): cropped limbs, cut-off legs, feet out of frame, touching borders, text, watermark, signature, bad anatomy, deformed, visual clutter, busy texture, noisy surface, fragmented details, cluttered gravel, micro-pebbles, pinecone texture, over-textured, messy details, old man, oily skin, greasy sheen, sweaty gloss, plastic skin, wax figure, specular hot spots, white glitter specks, lens flare, glossy highlights, 3d render shine, blown-out highlights, excessive specular reflection, gritty overlay, sandpaper texture, speckled skin, micro-gravel, dirty speckled artifacts, excessive surface noise";
       copyToClipboard(neg, btn, "已複製全域消光去油防雜亂負向提示詞！");
+    }
+
+    // 安全轉義
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
     }
   </script>
 </body>
